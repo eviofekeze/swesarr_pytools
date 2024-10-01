@@ -6,7 +6,7 @@ from geopy.distance import distance
 import numpy as np
 import pandas as pd
 import datetime
-from swesarr_utils import get_logger
+from .swesarr_utils import get_logger
 logger = get_logger(__name__)
 
 try:
