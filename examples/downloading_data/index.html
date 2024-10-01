@@ -15,6 +15,10 @@
         <link rel="canonical" href="https://eviofekeze.github.io/swesarr_pytools/examples/downloading_data/">
       
       
+        <link rel="prev" href="../data_prep/">
+      
+      
+        <link rel="next" href="../../swesarr_pytools/">
       
       
       <link rel="icon" href="../../assets/images/favicon.png">
@@ -399,17 +403,19 @@
       
   
   
+    
   
   
+  
     
     
     
     
-    <li class="md-nav__item md-nav__item--nested">
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
       
         
         
-        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_8" >
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_8" checked>
         
           
           <label class="md-nav__link" for="__nav_8" id="__nav_8_label" tabindex="0">
@@ -423,7 +429,7 @@
             <span class="md-nav__icon md-icon"></span>
           </label>
         
-        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_8_label" aria-expanded="false">
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_8_label" aria-expanded="true">
           <label class="md-nav__title" for="__nav_8">
             <span class="md-nav__icon md-icon"></span>
             Examples
@@ -437,15 +443,105 @@
   
   
     <li class="md-nav__item">
-      <a href="../intro.ipynb" class="md-nav__link">
+      <a href="../data_prep/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
-    None
+    Data prep
   </span>
   
 
       </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+    
+  
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  <span class="md-ellipsis">
+    Downloading data
+  </span>
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        
+  
+  <span class="md-ellipsis">
+    Downloading data
+  </span>
+  
+
+      </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#downloading-data" class="md-nav__link">
+    <span class="md-ellipsis">
+      Downloading Data
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Downloading Data">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#retrieving-metadata" class="md-nav__link">
+    <span class="md-ellipsis">
+      Retrieving Metadata
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#data-download" class="md-nav__link">
+    <span class="md-ellipsis">
+      Data Download
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
     </li>
   
 
@@ -1071,8 +1167,8 @@ span.linenos.special { color: #000000; background-color: #ffffc0; padding-left: 
 </div>
 </div>
 </div>
-</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell">
-<div class="jp-Cell jp-CodeCell jp-Notebook-cell" id="cell-id=76ef3e136adcbb49">
+</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell jp-mod-noOutputs">
+<div class="jp-Cell jp-CodeCell jp-Notebook-cell jp-mod-noOutputs" id="cell-id=76ef3e136adcbb49">
 <div class="jp-Cell-inputWrapper" tabindex="0">
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
@@ -1107,19 +1203,6 @@ from swesarr_pytools.access_swesarr import AccessSwesarr
 
 # Optional import for data
 from datetime import date</div>
-</div>
-</div>
-</div>
-</div>
-<div class="jp-Cell-outputWrapper">
-<div class="jp-Collapser jp-OutputCollapser jp-Cell-outputCollapser">
-</div>
-<div class="jp-OutputArea jp-Cell-outputArea">
-<div class="jp-OutputArea-child">
-<div class="jp-OutputPrompt jp-OutputArea-prompt"></div>
-<div class="jp-RenderedText jp-OutputArea-output" data-mime-type="application/vnd.jupyter.stderr" tabindex="0">
-<pre>SWESARR_PYTOOLS - 2024-10-01 18:29:03,038 - DEBUG - osgeo not found. Moving on..
-</pre>
 </div>
 </div>
 </div>
@@ -1279,8 +1362,8 @@ You will need to provide a destination folder in addition to the fight path of c
 </div>
 </div>
 </div>
-</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell jp-mod-noOutputs">
-<div class="jp-Cell jp-CodeCell jp-Notebook-cell jp-mod-noOutputs" id="cell-id=3cefa486">
+</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell">
+<div class="jp-Cell jp-CodeCell jp-Notebook-cell" id="cell-id=3cefa486">
 <div class="jp-Cell-inputWrapper" tabindex="0">
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
@@ -1313,6 +1396,24 @@ You will need to provide a destination folder in addition to the fight path of c
 #                              folder_name="./swesarr_pytool/resources/swesarr_data/",
 #                              dem=False,
 #                              band="all")</div>
+</div>
+</div>
+</div>
+</div>
+<div class="jp-Cell-outputWrapper">
+<div class="jp-Collapser jp-OutputCollapser jp-Cell-outputCollapser">
+</div>
+<div class="jp-OutputArea jp-Cell-outputArea">
+<div class="jp-OutputArea-child">
+<div class="jp-OutputPrompt jp-OutputArea-prompt"></div>
+<div class="jp-RenderedText jp-OutputArea-output" data-mime-type="application/vnd.jupyter.stderr" tabindex="0">
+<pre>ACCESS_SWESARR - 2024-10-01 08:51:35,267 - INFO - Downloaded: https://glihtdata.gsfc.nasa.gov/files/radar/SWESARR/prerelease/GRMCT1_13801_19005_010_191106_225_XX_01/GRMCT1_13801_19005_010_191106_09225VH_XX_01.tif
+ACCESS_SWESARR - 2024-10-01 08:51:37,754 - INFO - Downloaded: https://glihtdata.gsfc.nasa.gov/files/radar/SWESARR/prerelease/GRMCT1_13801_19005_010_191106_225_XX_01/GRMCT1_13801_19005_010_191106_09225VV_XX_01.tif
+ACCESS_SWESARR - 2024-10-01 08:51:40,509 - INFO - Downloaded: https://glihtdata.gsfc.nasa.gov/files/radar/SWESARR/prerelease/GRMCT1_13801_19005_010_191106_225_XX_01/GRMCT1_13801_19005_010_191106_13225VH_XX_01.tif
+ACCESS_SWESARR - 2024-10-01 08:51:42,877 - INFO - Downloaded: https://glihtdata.gsfc.nasa.gov/files/radar/SWESARR/prerelease/GRMCT1_13801_19005_010_191106_225_XX_01/GRMCT1_13801_19005_010_191106_13225VV_XX_01.tif
+ACCESS_SWESARR - 2024-10-01 08:51:45,396 - INFO - Downloaded: https://glihtdata.gsfc.nasa.gov/files/radar/SWESARR/prerelease/GRMCT1_13801_19005_010_191106_225_XX_01/GRMCT1_13801_19005_010_191106_17225VH_XX_01.tif
+ACCESS_SWESARR - 2024-10-01 08:51:47,750 - INFO - Downloaded: https://glihtdata.gsfc.nasa.gov/files/radar/SWESARR/prerelease/GRMCT1_13801_19005_010_191106_225_XX_01/GRMCT1_13801_19005_010_191106_17225VV_XX_01.tif
+</pre>
 </div>
 </div>
 </div>
@@ -1355,11 +1456,11 @@ You will need to provide a destination folder in addition to the fight path of c
 
 download_data(flight_path: str, folder_name: str, band: str = 'all', dem: bool = False) -&gt; None method of swesarr_pytools.access_swesarr.AccessSwesarr instance
     Downloads data for a specified flight path.
-    
+
     This method downloads the associated data into the specified folder. It also
     allows for filtering by band and includes an option to download DEM (Digital
     Elevation Model) data.
-    
+
     :param flight_path: str
         The name of the flight path to be downloaded
     :param folder_name: str
@@ -1415,12 +1516,12 @@ download_data(flight_path: str, folder_name: str, band: str = 'all', dem: bool =
 
 download_all_data(folder_name: str, band: str = 'all', dem: bool = False) -&gt; None method of swesarr_pytools.access_swesarr.AccessSwesarr instance
     Downloads data for all flights.
-    
+
     This method iterates over all flight paths generated in `self.flight_names` list
     and downloads the associated data into the specified folder. It also
     allows for filtering by band and includes an option to download DEM (Digital
     Elevation Model) data.
-    
+
     :param folder_name: str
         The name of the folder where the downloaded data will be stored
     :param band: str, optional
@@ -1429,7 +1530,7 @@ download_all_data(folder_name: str, band: str = 'all', dem: bool = False) -&gt; 
     :param dem: bool, optional
         If True, the Digital Elevation Model (DEM) data is downloaded along with the
         band data. Defaults to False
-    
+
     :return: None
 
 </pre>
@@ -1468,7 +1569,7 @@ download_all_data(folder_name: str, band: str = 'all', dem: bool = False) -&gt; 
     <span class="md-icon" title="Last update">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1zM12.5 7v5.2l4 2.4-1 1L11 13V7zM11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2z"/></svg>
     </span>
-    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-timeago"><span class="timeago" datetime="2024-10-01T18:27:55+00:00" locale="en"></span></span><span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date">2024-10-01</span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-timeago"><span class="timeago" datetime="2024-10-01T17:20:29+00:00" locale="en"></span></span><span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date">2024-10-01</span>
   </span>
 
     
@@ -1478,7 +1579,7 @@ download_all_data(folder_name: str, band: str = 'all', dem: bool = False) -&gt; 
     <span class="md-icon" title="Created">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M14.47 15.08 11 13V7h1.5v5.25l3.08 1.83c-.41.28-.79.62-1.11 1m-1.39 4.84c-.36.05-.71.08-1.08.08-4.42 0-8-3.58-8-8s3.58-8 8-8 8 3.58 8 8c0 .37-.03.72-.08 1.08.69.1 1.33.32 1.92.64.1-.56.16-1.13.16-1.72 0-5.5-4.5-10-10-10S2 6.5 2 12s4.47 10 10 10c.59 0 1.16-.06 1.72-.16-.32-.59-.54-1.23-.64-1.92M18 15v3h-3v2h3v3h2v-3h3v-2h-3v-3z"/></svg>
     </span>
-    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-timeago"><span class="timeago" datetime="2024-10-01T16:29:45+00:00" locale="en"></span></span><span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date">2024-10-01</span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-timeago"><span class="timeago" datetime="2024-10-01T02:24:02+00:00" locale="en"></span></span><span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date">2024-10-01</span>
   </span>
 
     
