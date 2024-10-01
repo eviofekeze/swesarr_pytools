@@ -40,7 +40,7 @@ from swesarr_pytools.access_swesarr import AccessSwesarr
 from datetime import date
 
 
-#Instatiate the Access Object
+#Instantiate the Access Object
 meta_object = AccessSwesarr()
 
 #Retrieve meta
