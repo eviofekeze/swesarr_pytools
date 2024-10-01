@@ -5,8 +5,8 @@
 [![image](https://img.shields.io/conda/vn/conda-forge/swesarr_pytools.svg)](https://anaconda.org/conda-forge/swesarr_pytools)
 
 
-**Library for  data retrieval and manipulation swesarr data for the NASA database.**
-swesarr_pytool is a python Library created for easy data retrieval and manipulation swesarr data for the NASA database.
+**Library for  data retrieval and manipulation of swesarr data for the NASA database.**
+swesarr_pytool is a python library created for easy data retrieval and manipulation swesarr data for the NASA database.
 
 The Snow Water Equivalent Synthetic Aperture Radar and Radiometer (SWESARR) is a Tri-Frequency Radar and Radiometer
 instrument designed to measure the water content in a snowpack. The instrument, developed at NASA’s Goddard Space Flight
@@ -24,6 +24,7 @@ SWESARR has three active (including a dual Ku band) and three passive bands. Rad
 
 ## Features
 
+To install the package simple run
 
 ```commandline
 pip install swesarr_pytool
@@ -57,4 +58,10 @@ available_dates = meta_object.available_date_within_range(start_date=date(2019, 
                                                end_date=date(2019, 12, 31))
 
 ```
+**Data Manipulation**
 
+The package also provides additional functionality for;
+- Reading a raster, Lidar and SWESARR
+- Converting these to Dataframe
+- Combining Fall and Winter SWESARR flights into one data frame for analysis
+Please see the  notebook directory for additional examples

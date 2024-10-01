@@ -4,7 +4,7 @@ version = "0.1.0"
 dynamic = [
     "dependencies",
 ]
-description = "Library for  data retrieval and manipulation swesarr data for the NASA database."
+description = "Library for  data retrieval and manipulation of swesarr data for the NASA database."
 readme = "README.md"
 requires-python = ">=3.8"
 keywords = [
