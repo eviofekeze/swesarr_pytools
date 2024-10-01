@@ -1,3 +1,9 @@
+.idea
+.my_pytools
+resources/swesarr_data_v3
+resources/swesarr_data
+resources/lidar_data
+
 # Byte-compiled / optimized / DLL files
 __pycache__/
 private/

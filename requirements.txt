@@ -1,1 +1,9 @@
 numpy
+pytest
+pandas
+requests
+rioxarray
+xarray
+geopy
+beautifulsoup4
+
