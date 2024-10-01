@@ -27,7 +27,7 @@ SWESARR has three active (including a dual Ku band) and three passive bands. Rad
 To install the package simple run
 
 ```commandline
-pip install swesarr_pytool
+pip install swesarr_pytoolS
 ```
 
 ### **Usage**
