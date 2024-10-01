@@ -3,7 +3,6 @@ import os
 from osgeo import gdal
 import rioxarray as rxr
 import xarray as xr
-from enum import Enum
 
 from geopy.distance import distance
 import numpy as np
