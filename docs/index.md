@@ -4,7 +4,7 @@
 [![image](https://img.shields.io/pypi/v/swesarr_pytools.svg)](https://pypi.python.org/pypi/swesarr_pytools)
 
 
-**Library for  data retrieval and manipulation of swesarr data for the NASA database.**
+**Library for data retrieval and processing of NASA GSFC Snow Water Equivalent Synthetic Aperture Radar and Radiometer data.**
 
 swesarr_pytool is a python library created for easy data retrieval and manipulation swesarr data for the NASA database.
 
