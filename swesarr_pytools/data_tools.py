@@ -60,7 +60,6 @@ class ReadSwesarr:
             data_files_list = None
             logger.info(f"Single band case")
 
-        del temp_list
         return data_files_list
 
 
