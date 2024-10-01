@@ -27,8 +27,15 @@ import numpy as np
 import pandas as pd
 import rioxarray
 
-from .utils.helper import join_files, gdal_corners
-from .utils.swesarr_utils import get_logger
+try:
+    from .utils.helper import join_files, gdal_corners
+    from .utils.swesarr_utils import get_logger
+except ImportError:
+    from utils.helper import join_files, gdal_corners
+    from utils.swesarr_utils import get_logger
+
+
+
 logger = get_logger(__file__)
 
 @dataclass
@@ -229,46 +236,26 @@ def combine_swesarr_lidar(fall_flight_directory: str,
                                                    lidar_raster=this_lidar_raster,
                                                    season="Winter")
 
-    fall_lidar_swesarr_data_09vv_dataframe = fall_projected_object.lidar_swesarr_data_09vv_dataFrame
-    fall_lidar_swesarr_data_09vh_dataframe = fall_projected_object.lidar_swesarr_data_09vh_dataFrame
-    fall_lidar_swesarr_data_13vv_dataframe = fall_projected_object.lidar_swesarr_data_13vv_dataFrame
-    fall_lidar_swesarr_data_13vh_dataframe = fall_projected_object.lidar_swesarr_data_13vh_dataFrame
-    fall_lidar_swesarr_data_17vv_dataframe = fall_projected_object.lidar_swesarr_data_17vv_dataFrame
-    fall_lidar_swesarr_data_17vh_dataframe = fall_projected_object.lidar_swesarr_data_17vh_dataFrame
+
+    df = fall_projected_object.lidar_swesarr_data_09vv_dataFrame
+    df = df.assign(F09VH=fall_projected_object.lidar_swesarr_data_09vh_dataFrame['F09VH'])
+    df = df.assign(F13VV=fall_projected_object.lidar_swesarr_data_13vv_dataFrame['F13VV'])
+    df = df.assign(F13VH=fall_projected_object.lidar_swesarr_data_13vh_dataFrame['F13VH'])
+    df = df.assign(F17VV=fall_projected_object.lidar_swesarr_data_17vv_dataFrame['F17VV'])
+    df = df.assign(F17VH=fall_projected_object.lidar_swesarr_data_17vh_dataFrame['F17VH'])
     if fall_projected_object.flag:
-        fall_lidar_swesarr_data_inc_dataframe = fall_projected_object.lidar_swesarr_data_inc_dataFrame
-        fall_lidar_swesarr_data_ofna_dataframe = fall_projected_object.lidar_swesarr_data_ofna_dataFrame
+        df = df.assign(FINC=fall_projected_object.lidar_swesarr_data_inc_dataFrame['FINC'])
+        df = df.assign(FOFNA=fall_projected_object.lidar_swesarr_data_ofna_dataFrame['FOFNA'])
 
-    winter_lidar_swesarr_data_09vv_dataframe = winter_projected_object.lidar_swesarr_data_09vv_dataFrame
-    winter_lidar_swesarr_data_09vh_dataframe = winter_projected_object.lidar_swesarr_data_09vh_dataFrame
-    winter_lidar_swesarr_data_13vv_dataframe = winter_projected_object.lidar_swesarr_data_13vv_dataFrame
-    winter_lidar_swesarr_data_13vh_dataframe = winter_projected_object.lidar_swesarr_data_13vh_dataFrame
-    winter_lidar_swesarr_data_17vv_dataframe = winter_projected_object.lidar_swesarr_data_17vv_dataFrame
-    winter_lidar_swesarr_data_17vh_dataframe = winter_projected_object.lidar_swesarr_data_17vh_dataFrame
+    df = df.assign(W09VV=winter_projected_object.lidar_swesarr_data_09vv_dataFrame['W09VV'])
+    df = df.assign(W09VH=winter_projected_object.lidar_swesarr_data_09vh_dataFrame['W09VH'])
+    df = df.assign(W13VV=winter_projected_object.lidar_swesarr_data_13vv_dataFrame['W13VV'])
+    df = df.assign(W13VH=winter_projected_object.lidar_swesarr_data_13vh_dataFrame['W13VH'])
+    df = df.assign(W17VV=winter_projected_object.lidar_swesarr_data_17vv_dataFrame['W17VV'])
+    df = df.assign(W17VH=winter_projected_object.lidar_swesarr_data_17vh_dataFrame['W17VH'])
     if winter_projected_object.flag:
-        winter_lidar_swesarr_data_inc_dataframe = winter_projected_object.lidar_swesarr_data_inc_dataFrame
-        winter_lidar_swesarr_data_ofna_dataframe = winter_projected_object.lidar_swesarr_data_ofna_dataFrame
-
-    df = fall_lidar_swesarr_data_09vv_dataframe
-
-    df = df.assign(F09VH=fall_lidar_swesarr_data_09vh_dataframe['F09VH'])
-    df = df.assign(F13VV=fall_lidar_swesarr_data_13vv_dataframe['F13VV'])
-    df = df.assign(F13VH=fall_lidar_swesarr_data_13vh_dataframe['F13VH'])
-    df = df.assign(F17VV=fall_lidar_swesarr_data_17vv_dataframe['F17VV'])
-    df = df.assign(F17VH=fall_lidar_swesarr_data_17vh_dataframe['F17VH'])
-    if fall_projected_object.flag:
-        df = df.assign(FINC=fall_lidar_swesarr_data_inc_dataframe['FINC'])
-        df = df.assign(FOFNA=fall_lidar_swesarr_data_ofna_dataframe['FOFNA'])
-
-    df = df.assign(W09VV=winter_lidar_swesarr_data_09vv_dataframe['W09VV'])
-    df = df.assign(W09VH=winter_lidar_swesarr_data_09vh_dataframe['W09VH'])
-    df = df.assign(W13VV=winter_lidar_swesarr_data_13vv_dataframe['W13VV'])
-    df = df.assign(W13VH=winter_lidar_swesarr_data_13vh_dataframe['W13VH'])
-    df = df.assign(W17VV=winter_lidar_swesarr_data_17vv_dataframe['W17VV'])
-    df = df.assign(W17VH=winter_lidar_swesarr_data_17vh_dataframe['W17VH'])
-    if winter_projected_object.flag:
-        df = df.assign(WINC=winter_lidar_swesarr_data_inc_dataframe['WINC'])
-        df = df.assign(WOFNA=winter_lidar_swesarr_data_ofna_dataframe['WOFNA'])
+        df = df.assign(WINC=winter_projected_object.lidar_swesarr_data_inc_dataFrame['WINC'])
+        df = df.assign(WOFNA=winter_projected_object.lidar_swesarr_data_ofna_dataFrame['WOFNA'])
 
     df = df.assign(Depth=lidar_object_df['Depth'])
 
