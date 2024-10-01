@@ -2,7 +2,7 @@
 
 __author__ = """Evi Ofekeze"""
 __email__ = "eviofekeze@u.boisestate.edu"
-__version__ = "0.1.0"
+__version__ = "0.1.1"
 
 from tests.test_access_swesarr import access_swesarr
 
