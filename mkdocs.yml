@@ -1,5 +1,5 @@
 site_name: swesarr_pytools
-site_description: Library for  data retrieval and manipulation of swesarr data for the NASA database.
+site_description: Library for data retrieval and processing of NASA GSFC Snow Water Equivalent Synthetic Aperture Radar and Radiometer data.
 site_author: eviofekeze
 site_url: https://eviofekeze.github.io/swesarr_pytools
 repo_url: https://github.com/eviofekeze/swesarr_pytools

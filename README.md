@@ -29,7 +29,7 @@ SWESARR has three active (including a dual Ku band) and three passive bands. Rad
 To install the package:
 
 ```commandline
-pip install swesarr_pytoolS
+pip install swesarr_pytools
 ```
 
 ### **Usage**
@@ -44,19 +44,19 @@ from datetime import date
 
 
 #Instantiate the Access Object
-meta_object = AccessSwesarr()
+swesarr_object = AccessSwesarr()
 
 #Retrieve meta
-swesarr_metadata = meta_object.data_meta
+swesarr_metadata = swesarr_object.data_meta
 
 #Retrieve flight path
-flight_paths = meta_object.flight_names
+flight_paths = swesarr_object.flight_names
 
 #Retrieve flight date
-flight_dates = meta_object.flight_dates
+flight_dates = swesarr_object.flight_dates
 
 #search for flight within a date range
-available_dates = meta_object.available_date_within_range(start_date=date(2019, 1, 1),
+available_dates = swesarr_object.available_date_within_range(start_date=date(2019, 1, 1),
                                                end_date=date(2019, 12, 31))
 
 ```
