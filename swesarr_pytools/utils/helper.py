@@ -1,6 +1,4 @@
 import os
-
-from osgeo import gdal
 import rioxarray as rxr
 import xarray as xr
 
@@ -8,6 +6,11 @@ from geopy.distance import distance
 import numpy as np
 import pandas as pd
 import datetime
+
+try:
+    from osgeo import gdal
+except ModuleNotFoundError:
+    pass
 
 
 def gdal_corners(filename):
