@@ -25,12 +25,12 @@ def test_validate_date(access_swesarr):
 
 
 def test_available_date_within_range(access_swesarr):
-    retrieved_dates = access_swesarr.available_date_within_range(start_date=datetime.date(2019, 1, 1),
-                                                                 end_date=datetime.date(2019, 12, 31))
+    retrieved_dates = access_swesarr.available_date_within_range(start_date=datetime.date(year=2019, month=1, day=1),
+                                                                 end_date=datetime.date(year=2019, month=12, day=31))
     assert retrieved_dates == expected_data.EXPECTED_DATES_RANGE
 
     retrieved_empty_dates = access_swesarr.available_date_within_range(
-        start_date=datetime.date(2018, 1, 1),
-        end_date=datetime.date(2018, 12, 31)
+        start_date=datetime.date(year=2018, month=1, day=1),
+        end_date=datetime.date(year=2018, month=12, day=31)
     )
     assert retrieved_empty_dates is None

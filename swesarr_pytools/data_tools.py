@@ -91,24 +91,15 @@ class ReadSwesarr:
     def get_swesarr_df(self) -> pd.DataFrame:
         current_swesarr = self.get_swesarr_raster()
 
-        current_swesarr_09vv_dataframe = self.single_band_to_dataframe(swesarr_raster=current_swesarr, band="09VV")
-        current_swesarr_09vh_dataframe = self.single_band_to_dataframe(swesarr_raster=current_swesarr, band="09VH")
-        current_swesarr_13vh_dataframe = self.single_band_to_dataframe(swesarr_raster=current_swesarr, band="13VH")
-        current_swesarr_13vv_dataframe = self.single_band_to_dataframe(swesarr_raster=current_swesarr, band="13VV")
-        current_swesarr_17vv_dataframe = self.single_band_to_dataframe(swesarr_raster=current_swesarr, band="17VV")
-        current_swesarr_17vh_dataframe = self.single_band_to_dataframe(swesarr_raster=current_swesarr, band="17VH")
+        df = self.single_band_to_dataframe(swesarr_raster=current_swesarr, band="09VV")
+        df = df.assign(C09VH=self.single_band_to_dataframe(swesarr_raster=current_swesarr, band="09VH")['C09VH'])
+        df = df.assign(C13VV=self.single_band_to_dataframe(swesarr_raster=current_swesarr, band="13VV")['C13VV'])
+        df = df.assign(C13VH=self.single_band_to_dataframe(swesarr_raster=current_swesarr, band="13VH")['C13VH'])
+        df = df.assign(C17VV=self.single_band_to_dataframe(swesarr_raster=current_swesarr, band="17VV")['C17VV'])
+        df = df.assign(C17VH=self.single_band_to_dataframe(swesarr_raster=current_swesarr, band="17VH")['C17VH'])
 
         del current_swesarr
 
-        df = current_swesarr_09vv_dataframe
-        df = df.assign(C09VH=current_swesarr_09vh_dataframe['C09VH'])
-        df = df.assign(C13VV=current_swesarr_13vv_dataframe['C13VV'])
-        df = df.assign(C13VH=current_swesarr_13vh_dataframe['C13VH'])
-        df = df.assign(C17VV=current_swesarr_17vv_dataframe['C17VV'])
-        df = df.assign(C17VH=current_swesarr_17vh_dataframe['C17VH'])
-
-        del current_swesarr_09vv_dataframe, current_swesarr_09vh_dataframe, current_swesarr_13vv_dataframe
-        del current_swesarr_13vh_dataframe, current_swesarr_17vv_dataframe, current_swesarr_17vh_dataframe
 
         if self.season == 'Fall':
             df.columns = ['y', 'x', 'F09VV', 'F09VH', 'F13VV', 'F13VH', 'F17VV', 'F17VH']
@@ -265,3 +256,6 @@ def combine_swesarr_lidar(fall_flight_directory: str,
 
 if __name__ == "__main__":
     logger.info(f"Nothing to report... Moving on")
+
+
+

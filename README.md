@@ -2,7 +2,8 @@
 
 
 [![image](https://img.shields.io/pypi/v/swesarr_pytools.svg)](https://pypi.python.org/pypi/swesarr_pytools)
-[![image](https://img.shields.io/conda/vn/conda-forge/swesarr_pytools.svg)](https://anaconda.org/conda-forge/swesarr_pytools)
+
+[//]: # ([![image]&#40;https://img.shields.io/conda/vn/conda-forge/swesarr_pytools.svg&#41;]&#40;https://anaconda.org/conda-forge/swesarr_pytools&#41;)
 
 
 **Library for data retrieval and processing of NASA GSFC Snow Water Equivalent Synthetic Aperture Radar and Radiometer data.**
