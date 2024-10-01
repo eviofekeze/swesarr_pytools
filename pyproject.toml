@@ -34,8 +34,7 @@ all = [
 ]
 
 extra = [
-    "pandas",
-    "gdal"
+    "pandas"
 ]
 
 
