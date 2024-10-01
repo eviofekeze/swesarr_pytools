@@ -1,8 +1,8 @@
 """
 This main class has the following functionality
-1. Data retrival for SWESARR flight from https://glihtdata.gsfc.nasa.gov/files/radar/SWESARR/prerelease
-2. Metadata retrival for SWESARR flight path
-3. Singular Flight path download for one flight line but six frequecies
+1. Data retrieval for SWESARR flight from https://glihtdata.gsfc.nasa.gov/files/radar/SWESARR/prerelease
+2. Metadata retrieval for SWESARR flight path
+3. Singular Flight path download for one flight line but six frequencies
 4. Singular frequency download for a given flight line
 5. Flight path search using date
 """
