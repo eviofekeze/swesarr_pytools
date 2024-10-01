@@ -4,7 +4,7 @@ version = "0.1.6"
 dynamic = [
     "dependencies",
 ]
-description = "Library for  data retrieval and manipulation of swesarr data for the NASA database."
+description = "Library for data retrieval and processing of NASA GSFC Snow Water Equivalent Synthetic Aperture Radar and Radiometer data."
 readme = "README.md"
 requires-python = ">=3.8"
 keywords = [

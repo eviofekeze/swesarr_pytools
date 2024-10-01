@@ -50,7 +50,7 @@ plugins:
           execute: True
           allow_errors: false
           ignore: ["conf.py"]
-          execute_ignore: ["*ignore.ipynb"]
+          execute_ignore: ["*.ipynb"]
 
 markdown_extensions:
     - admonition
@@ -80,7 +80,8 @@ nav:
     - Changelog: changelog.md
     - Report Issues: https://github.com/eviofekeze/swesarr_pytools/issues
     - Examples:
-        - examples/intro.ipynb
+        - examples/data_prep.ipynb
+        - examples/downloading_data.ipynb
     - API Reference:
           - swesarr_pytools module: swesarr_pytools.md
           - common module: common.md
