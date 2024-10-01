@@ -6,4 +6,4 @@ rioxarray
 xarray
 geopy
 beautifulsoup4
-gdal
+gdal[numpy]=="$(gdal-config --version).*"
