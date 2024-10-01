@@ -2,7 +2,7 @@
 
 __author__ = """Evi Ofekeze"""
 __email__ = "eviofekeze@u.boisestate.edu"
-__version__ = "0.1.1"
+__version__ = "0.1.2"
 
 from .access_swesarr import AccessSwesarr
 from .data_tools import ReadSwesarr, ReadLidar, SwesarrLidarProjection, combine_swesarr_lidar
