@@ -6,11 +6,13 @@ from geopy.distance import distance
 import numpy as np
 import pandas as pd
 import datetime
+from swesarr_utils import get_logger
+logger = get_logger(__name__)
 
 try:
     from osgeo import gdal
 except ModuleNotFoundError:
-    pass
+    logger.debug(f"osgeo not found. Moving on..")
 
 
 def gdal_corners(filename):
@@ -36,11 +38,6 @@ def gdal_corners(filename):
     ------
     The function assumes the image has a georeferenced coordinate system and uses the
     GeoTransform matrix to compute the corner coordinates.
-
-    Example:
-    --------
-    >>> minx, miny, maxx, maxy = gdal_corners('image.tif')
-    >>> print(f"Bounding box: {minx}, {miny}, {maxx}, {maxy}")
     """
     ds = gdal.Open(filename)
     width = ds.RasterXSize
