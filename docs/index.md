@@ -6,7 +6,7 @@
 
 **Library for data retrieval and processing of NASA GSFC Snow Water Equivalent Synthetic Aperture Radar and Radiometer data.**
 
-swesarr_pytool is a python library created for easy data retrieval and manipulation swesarr data for the NASA database.
+swesarr_pytool is a python library for data retrieval and processing of NASA GSFC Snow Water Equivalent Synthetic Aperture Radar and Radiometer data.
 
 The Snow Water Equivalent Synthetic Aperture Radar and Radiometer (SWESARR) is a Tri-Frequency Radar and Radiometer
 instrument designed to measure the water content in a snowpack. The instrument, developed at NASA’s Goddard Space Flight
