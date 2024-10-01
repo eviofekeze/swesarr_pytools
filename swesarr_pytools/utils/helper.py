@@ -1,6 +1,6 @@
 import os
 
-# from osgeo import gdal
+from osgeo import gdal
 import rioxarray as rxr
 import xarray as xr
 
