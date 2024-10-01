@@ -27,8 +27,8 @@ import numpy as np
 import pandas as pd
 import rioxarray
 
-from utils.helper import join_files, gdal_corners
-from utils.swesarr_utils import get_logger
+from .utils.helper import join_files, gdal_corners
+from .utils.swesarr_utils import get_logger
 logger = get_logger(__file__)
 
 @dataclass

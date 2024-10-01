@@ -28,7 +28,7 @@ from bs4 import BeautifulSoup
 
 from datetime import datetime
 from datetime import date
-from utils.swesarr_utils import get_logger
+from .utils.swesarr_utils import get_logger
 
 logger = get_logger(__file__)
 
