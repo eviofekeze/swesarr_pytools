@@ -51,20 +51,22 @@ class ReadSwesarr:
 
     def get_data_files(self) -> List:
 
-
+        data_files_list = None
         if Path(self.flight_path).is_dir():
             temp_list = [file for file in os.listdir(self.flight_path) if file.endswith(".tif")]
 
             if self.band.lower() == "x":
-                data_files_list = [item for item in temp_list if "09225" in item]
+                data_files_list = [item for item in temp_list if ("09225" in item) or
+                                   ("XVV" in item) or ("XVH" in item)]
             elif self.band.lower() == "kulo":
-                data_files_list = [item for item in temp_list if "13225" in item]
+                data_files_list = [item for item in temp_list if ("13225" in item) or
+                                   ("Kl" in item) or ("XVVI" in item) or ("XVVO" in item)]
             elif self.band.lower() == "kuhi":
-                data_files_list = [item for item in temp_list if "17225" in item]
+                data_files_list = [item for item in temp_list if ("17225" in item) or
+                                   ("Kh" in item) or ("XVVI" in item) or ("XVVO" in item)]
             else:
                 data_files_list = temp_list
         else:
-            data_files_list = None
             logger.info(f"Single band case")
 
         return data_files_list
@@ -91,20 +93,49 @@ class ReadSwesarr:
     def get_swesarr_df(self) -> pd.DataFrame:
         current_swesarr = self.get_swesarr_raster()
 
-        df = self.single_band_to_dataframe(swesarr_raster=current_swesarr, band="09VV")
-        df = df.assign(C09VH=self.single_band_to_dataframe(swesarr_raster=current_swesarr, band="09VH")['C09VH'])
-        df = df.assign(C13VV=self.single_band_to_dataframe(swesarr_raster=current_swesarr, band="13VV")['C13VV'])
-        df = df.assign(C13VH=self.single_band_to_dataframe(swesarr_raster=current_swesarr, band="13VH")['C13VH'])
-        df = df.assign(C17VV=self.single_band_to_dataframe(swesarr_raster=current_swesarr, band="17VV")['C17VV'])
-        df = df.assign(C17VH=self.single_band_to_dataframe(swesarr_raster=current_swesarr, band="17VH")['C17VH'])
+        if self.version == "v1":
+            df = self.single_band_to_dataframe(swesarr_raster=current_swesarr, band="09VV")
+            df = df.assign(C09VH=self.single_band_to_dataframe(swesarr_raster=current_swesarr, band="09VH")['C09VH'])
+            df = df.assign(C13VV=self.single_band_to_dataframe(swesarr_raster=current_swesarr, band="13VV")['C13VV'])
+            df = df.assign(C13VH=self.single_band_to_dataframe(swesarr_raster=current_swesarr, band="13VH")['C13VH'])
+            df = df.assign(C17VV=self.single_band_to_dataframe(swesarr_raster=current_swesarr, band="17VV")['C17VV'])
+            df = df.assign(C17VH=self.single_band_to_dataframe(swesarr_raster=current_swesarr, band="17VH")['C17VH'])
+        else:
+            df = self.single_band_to_dataframe(swesarr_raster=current_swesarr, band="XVV")
+            df = df.assign(C09VH=self.single_band_to_dataframe(swesarr_raster=current_swesarr, band="XVH")['CXVH'])
+            df = df.assign(C13VV=self.single_band_to_dataframe(swesarr_raster=current_swesarr, band="KlVV")['CKlVV'])
+            df = df.assign(C13VH=self.single_band_to_dataframe(swesarr_raster=current_swesarr, band="KlVH")['CKlVH'])
+            df = df.assign(C17VV=self.single_band_to_dataframe(swesarr_raster=current_swesarr, band="KhVV")['CKhVV'])
+            df = df.assign(C17VH=self.single_band_to_dataframe(swesarr_raster=current_swesarr, band="KhVH")['CKhVH'])
+            df = df.assign(CXVVINC=self.single_band_to_dataframe(swesarr_raster=current_swesarr, band="XVVINC")['CXVVINC'])
+            df = df.assign(CXVVOFNA=self.single_band_to_dataframe(swesarr_raster=current_swesarr, band="XVVOFNA")['CXVVOFNA'])
+
 
         del current_swesarr
 
 
-        if self.season == 'Fall':
-            df.columns = ['y', 'x', 'F09VV', 'F09VH', 'F13VV', 'F13VH', 'F17VV', 'F17VH']
-        elif self.season == 'Winter':
-            df.columns = ['y', 'x', 'W09VV', 'W09VH', 'W13VV', 'W13VH', 'W17VV', 'W17VH']
+        if self.version == "v1":
+            if self.season == 'Fall':
+                df.rename(columns={'C09VV': 'F09VV', 'C09VH': 'F09VH', 'C13VV': 'F13VV',
+                                   'C13VH': 'F13VH', 'C17VV': 'F17VV', 'C17VH': 'F17VH'},
+                          inplace=True)
+            elif self.season == 'Winter':
+                df.rename(columns={'C09VV': 'W09VV', 'C09VH': 'W09VH', 'C13VV': 'W13VV',
+                                   'C13VH': 'W13VH', 'C17VV': 'W17VV', 'C17VH': 'W17VH'},
+                          inplace=True)
+        elif self.version == "v3":
+            if self.season == 'Fall':
+                df.rename(columns={'CXVV': 'F09VV', 'C09VH': 'F09VH', 'C13VV': 'F13VV', 'C13VH': 'F13VH',
+                                   'C17VV': 'F17VV', 'C17VH': 'F17VH', 'CXVVINC': 'FINC', 'CXVVOFNA': 'FOFNA'},
+                          inplace=True)
+            elif self.season == 'Winter':
+                df.rename(columns={'CXVV': 'W09VV','C09VH': 'W09VH','C13VV': 'W13VV','C13VH': 'W13VH',
+                                   'C17VV': 'W17VV', 'C17VH': 'W17VH', 'CXVVINC': 'WINC','CXVVOFNA': 'WOFNA'},
+                          inplace=True)
+
+        else:
+            raise Exception (f"Invalid Version: Supported Version is either of 'v1' or 'v3'")
+
 
         df = df.dropna() if self.drop_na else df
 
