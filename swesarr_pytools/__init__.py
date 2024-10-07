@@ -4,11 +4,11 @@ __author__ = """Evi Ofekeze"""
 __email__ = "eviofekeze@u.boisestate.edu"
 __version__ = "0.1.8"
 
-from .access_swesarr import AccessSwesarr
+from .access_swesarr import AccessSAR
 from .data_tools import ReadSwesarr, ReadLidar, SwesarrLidarProjection, combine_swesarr_lidar
 
 __all__ = [
-    "AccessSwesarr",
+    "AccessSAR",
     "ReadSwesarr",
     "ReadLidar",
     "SwesarrLidarProjection",

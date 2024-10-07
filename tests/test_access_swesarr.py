@@ -2,12 +2,12 @@ import datetime
 
 import pytest
 from resources import expected_data
-from swesarr_pytools.access_swesarr import AccessSwesarr
+from swesarr_pytools.access_swesarr import AccessSAR
 
 
 @pytest.fixture
 def access_swesarr():
-    return AccessSwesarr()
+    return AccessSAR()
 
 
 def test_retrieve_meta(access_swesarr):

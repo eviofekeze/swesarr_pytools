@@ -17,7 +17,13 @@ __email__ = "eviofekeze@u.boisestate.edu"
 __maintainer__ = "developer"
 __status__ = "Research"
 
+import itertools
 import os
+from os.path import join
+from subprocess import Popen
+from getpass import getpass
+from netrc import netrc
+
 from pathlib import Path
 from typing import Dict, List, Union
 from dataclasses import dataclass, field
@@ -37,13 +43,47 @@ except ImportError:
 logger = get_logger(__file__)
 
 
+def create_netrc(urs = 'urs.earthdata.nasa.gov'):
+    """
+    Creates netrc file for user.
+    This function is adapted from: https://git.earthdata.nasa.gov/projects/LPDUR/repos/daac_data_download_python/browse/EarthdataLoginSetup.py
+    """
+    prompt_username = "Enter NASA Earthdata Login Username \n(or create an account at urs.earthdata.nasa.gov): "
+    prompt_password = "Enter NASA Earthdata Login Password: "
+
+    try:
+        netrc_dir = os.path.expanduser("~/.netrc")
+        netrc(netrc_dir).authenticators(urs)[0]
+
+    # Below, create a netrc file and prompt user for NASA Earthdata Login Username and Password
+    except FileNotFoundError:
+        home_dir = os.path.expanduser("~")
+        netrc_fp = join(home_dir,'.netrc')
+        Popen(f'touch {netrc_fp} | chmod og-rw {netrc_fp} | echo machine {urs} >> {netrc_fp}', shell=True)
+        Popen(f'echo login {getpass(prompt=prompt_username)} >> {netrc_fp}', shell=True)
+        Popen(f'echo password {getpass(prompt=prompt_password)} >> {netrc_fp}', shell=True)
+
+    # Determine OS and edit netrc file if it exists but is not set up for NASA Earthdata Login
+    except TypeError:
+        home_dir = os.path.expanduser("~")
+        netrc_fp = join(home_dir,'.netrc')
+        Popen(f'echo machine {urs} >> {netrc_fp}'.format(home_dir + os.sep, urs), shell=True)
+        Popen(f'echo login {getpass(prompt=prompt_username)} >> {netrc_fp}', shell=True)
+        Popen(f'echo password {getpass(prompt=prompt_password)} >> {netrc_fp}', shell=True)
+
+    # If permission denied t
+    except PermissionError:
+        logger.warning('Permission error. Change permissions on netrc file.')
+
+
+
 @dataclass
-class AccessSwesarr:
+class AccessSAR:
     url: str = f"https://glihtdata.gsfc.nasa.gov/files/radar/SWESARR/prerelease"
     ext: str = ""
-    flight_names: List = field(init=False)
-    flight_dates: List = field(init=False)
-    data_meta: Dict = field(init=False)
+    flight_names: List[str] = field(default_factory=dict, init=False)
+    flight_dates: List = field(default_factory=dict, init=False)
+    data_meta: Dict[str, str] = field(default_factory=dict, init=False)
 
     def __post_init__(self):
         self.retrieve_meta()
@@ -107,7 +147,7 @@ class AccessSwesarr:
     @staticmethod
     def download_tif(base_url: str, file_name: str) -> None:
         """
-        Helper function to download a specific fly
+        Helper function to download a specific flight path
         :param base_url: The root Url
         :param file_name: The file name corresponding the band
         :return: None
@@ -158,24 +198,24 @@ class AccessSwesarr:
 
         fully_qualified_folder_name = Path(f"{folder_name}/{flight_path}")
         os.makedirs(fully_qualified_folder_name, exist_ok=True)
-        if band == "all":
+        if band.lower() == "all":
             for link in tif_links:
                 file_name = os.path.join(fully_qualified_folder_name, os.path.basename(link))
                 self.download_tif(link, file_name)
 
-        elif band == "x":
+        elif band.lower() == "x":
             tif_links = [item for item in tif_links if "09225" in item]
             for link in tif_links:
                 file_name = os.path.join(fully_qualified_folder_name, os.path.basename(link))
                 self.download_tif(link, file_name)
 
-        elif band == "kulo":
+        elif band.lower() == "kulo":
             tif_links = [item for item in tif_links if "13225" in item]
             for link in tif_links:
                 file_name = os.path.join(fully_qualified_folder_name, os.path.basename(link))
                 self.download_tif(link, file_name)
 
-        elif band == "kuhi":
+        elif band.lower() == "kuhi":
             tif_links = [item for item in tif_links if "17225" in item]
             for link in tif_links:
                 file_name = os.path.join(fully_qualified_folder_name, os.path.basename(link))
@@ -212,5 +252,85 @@ class AccessSwesarr:
         return
 
 
+@dataclass
+class AccessRadiometer:
+    urs_url: str = "https://n5eil01u.ecs.nsidc.org/SNOWEX/SNEX20_SWESARR_TB.001/"
+    radiometer_meta: Dict[str, list] = field(default_factory=dict)
+
+    def __post_init__(self):
+        create_netrc()
+        self.retrieve_meta()
+
+    def retrieve_meta(self) -> None:
+        flight_days = ["10", "11", "12"]
+
+        for flight_day in flight_days:
+            response = requests.get(f"{self.urs_url}2020.02.{flight_day}/")
+            if response.ok:
+                response_text = response.text
+            else:
+                return response.raise_for_status()
+
+            soup = BeautifulSoup(response_text, features='html.parser')
+            csv_links = [link['href'] for link in soup.find_all('a') if link['href'].endswith('.csv')]
+            csv_links = list(set(csv_links))
+            self.radiometer_meta[f"2020.02.{flight_day}"] = csv_links
+
+    def download_radiometer(self, file_name: str, destination_folder: str = ".") -> None:
+        """
+
+        :param file_name: file to download
+        :param destination_folder: destination to store file
+        :return: None
+        """
+        day: str = file_name.split('_')[7][-2:]
+        url_builder: str = f"{self.urs_url}2020.02.{day}/{file_name}"
+
+        response = requests.get(url_builder)
+
+        destination = Path(f"{destination_folder}/2020_02_{day}")
+        if destination.exists():
+            pass
+        else:
+            os.makedirs(f"{destination_folder}/2020_02_{day}")
+
+        with open(f"{destination_folder}/2020_02_{day}/{file_name}", 'wb') as handle:
+            for chunk in response.iter_content(chunk_size=1024):
+                if chunk:
+                    handle.write(chunk)
+                    handle.flush()
+        logger.info(f"Downloaded: {file_name}")
+        return
+
+    def bulk_download_radiometer(self, destination_folder: str = ".", day: str = "all") -> None:
+        """
+
+        :param destination_folder: The folder to store the downloaded data
+        :param day: any of  "10", "11", "12" defaults to all which will download all
+        :return:
+        """
+        if day.lower() != "all":
+            file_list: List = self.radiometer_meta[f"2020.02.{day}"]
+            for file in file_list:
+                self.download_radiometer(file_name=file, destination_folder=destination_folder)
+        else:
+            flight_days = ["10", "11", "12"]
+            file_list: List = []
+
+            for day in flight_days:
+                file_list.append(self.radiometer_meta[f"2020.02.{day}"])
+
+            file_list = list(itertools.chain(*file_list))
+            for file in file_list:
+                self.download_radiometer(file_name=file, destination_folder=destination_folder)
+
+        return
+
+
+
 if __name__ == '__main__':
     logger.info(f"Nothing to report... Moving on")
+
+
+
+

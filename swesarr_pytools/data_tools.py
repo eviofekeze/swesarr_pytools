@@ -1,10 +1,9 @@
 """
-This main class has the following functionality
-1. Data retrieval for SWESARR flight from https://glihtdata.gsfc.nasa.gov/files/radar/SWESARR/prerelease
-2. Metadata retrieval for SWESARR flight path
-3. Singular Flight path download for one flight line but six frequencies
-4. Singular frequency download for a given flight line
-5. Flight path search using date
+This Data processing module has the following functionality
+1. Class to read a swesarr
+2. Class to read Lidar
+3. Function to reproject Swesarr and lidar
+4. Function to combine swesarr fall , swesarr fall winter and lidar into one dataframe
 """
 
 __author__ = "Evi Ofekeze"
@@ -40,6 +39,7 @@ logger = get_logger(__file__)
 
 @dataclass
 class ReadSwesarr:
+
     flight_path: str
     version: str = "v1"
     band: str = "all"
@@ -80,6 +80,8 @@ class ReadSwesarr:
             current_swesarr = join_files(file_list=path_list, version=self.version)
         elif Path(self.flight_path).is_file():
             current_swesarr = join_files(file_list=[self.flight_path], version=self.version)
+        else:
+            raise Exception(f"Please specify path to directory or single file")
         return current_swesarr
 
     @staticmethod
@@ -102,37 +104,26 @@ class ReadSwesarr:
             df = df.assign(C17VH=self.single_band_to_dataframe(swesarr_raster=current_swesarr, band="17VH")['C17VH'])
         else:
             df = self.single_band_to_dataframe(swesarr_raster=current_swesarr, band="XVV")
-            df = df.assign(C09VH=self.single_band_to_dataframe(swesarr_raster=current_swesarr, band="XVH")['CXVH'])
-            df = df.assign(C13VV=self.single_band_to_dataframe(swesarr_raster=current_swesarr, band="KlVV")['CKlVV'])
-            df = df.assign(C13VH=self.single_band_to_dataframe(swesarr_raster=current_swesarr, band="KlVH")['CKlVH'])
-            df = df.assign(C17VV=self.single_band_to_dataframe(swesarr_raster=current_swesarr, band="KhVV")['CKhVV'])
-            df = df.assign(C17VH=self.single_band_to_dataframe(swesarr_raster=current_swesarr, band="KhVH")['CKhVH'])
-            df = df.assign(CXVVINC=self.single_band_to_dataframe(swesarr_raster=current_swesarr, band="XVVINC")['CXVVINC'])
-            df = df.assign(CXVVOFNA=self.single_band_to_dataframe(swesarr_raster=current_swesarr, band="XVVOFNA")['CXVVOFNA'])
+            df = df.rename(columns={"VVV": "CXVV"})
+            df = df.assign(C09VH=self.single_band_to_dataframe(swesarr_raster=current_swesarr, band="XVH")['C09VH'])
+            df = df.assign(C13VV=self.single_band_to_dataframe(swesarr_raster=current_swesarr, band="KlVV")['C13VV'])
+            df = df.assign(C13VH=self.single_band_to_dataframe(swesarr_raster=current_swesarr, band="KlVH")['C13VH'])
+            df = df.assign(C17VV=self.single_band_to_dataframe(swesarr_raster=current_swesarr, band="KhVV")['C17VV'])
+            df = df.assign(C17VH=self.single_band_to_dataframe(swesarr_raster=current_swesarr, band="KhVH")['C17VH'])
+            df = df.assign(CINC=self.single_band_to_dataframe(swesarr_raster=current_swesarr, band="XVVINC")['CINC'])
+            df = df.assign(COFNA=self.single_band_to_dataframe(swesarr_raster=current_swesarr, band="XVVOFNA")['COFNA'])
 
 
         del current_swesarr
 
-
-        if self.version == "v1":
-            if self.season == 'Fall':
-                df.rename(columns={'C09VV': 'F09VV', 'C09VH': 'F09VH', 'C13VV': 'F13VV',
-                                   'C13VH': 'F13VH', 'C17VV': 'F17VV', 'C17VH': 'F17VH'},
-                          inplace=True)
-            elif self.season == 'Winter':
-                df.rename(columns={'C09VV': 'W09VV', 'C09VH': 'W09VH', 'C13VV': 'W13VV',
-                                   'C13VH': 'W13VH', 'C17VV': 'W17VV', 'C17VH': 'W17VH'},
-                          inplace=True)
-        elif self.version == "v3":
-            if self.season == 'Fall':
-                df.rename(columns={'CXVV': 'F09VV', 'C09VH': 'F09VH', 'C13VV': 'F13VV', 'C13VH': 'F13VH',
-                                   'C17VV': 'F17VV', 'C17VH': 'F17VH', 'CXVVINC': 'FINC', 'CXVVOFNA': 'FOFNA'},
-                          inplace=True)
-            elif self.season == 'Winter':
-                df.rename(columns={'CXVV': 'W09VV','C09VH': 'W09VH','C13VV': 'W13VV','C13VH': 'W13VH',
-                                   'C17VV': 'W17VV', 'C17VH': 'W17VH', 'CXVVINC': 'WINC','CXVVOFNA': 'WOFNA'},
-                          inplace=True)
-
+        if self.season.lower() == 'fall':
+            df.rename(columns={'C09VV': 'F09VV', 'C09VH': 'F09VH', 'C13VV': 'F13VV', 'C13VH': 'F13VH',
+                               'C17VV': 'F17VV', 'C17VH': 'F17VH', 'CXVVINC': 'FINC', 'CXVVOFNA': 'FOFNA'},
+                      inplace=True)
+        elif self.season.lower() == 'winter':
+            df.rename(columns={'CXVV': 'W09VV','C09VH': 'W09VH','C13VV': 'W13VV','C13VH': 'W13VH',
+                               'C17VV': 'W17VV', 'C17VH': 'W17VH', 'CXVVINC': 'WINC','CXVVOFNA': 'WOFNA'},
+                      inplace=True)
         else:
             raise Exception (f"Invalid Version: Supported Version is either of 'v1' or 'v3'")
 
@@ -152,6 +143,10 @@ class ReadLidar:
 
 
     def get_lidar_raster(self):
+        """
+        retrieves Lidar raster as an Xarray Dataset
+        :return:
+        """
 
         data_array_3m = rioxarray.open_rasterio(self.lidar_path)
         if self.swesarr_flight_path is not None:
@@ -173,6 +168,10 @@ class ReadLidar:
         return data_array_3m
 
     def get_lidar_df(self) -> pd.DataFrame:
+        """
+        Convert lidar to dataframe
+        :return: pd.DataFrame
+        """
         data_array_3m = self.get_lidar_raster()
         lidar_df = data_array_3m.squeeze().drop_vars(["spatial_ref", "band"])
         lidar_df.name = self.lidar_name
@@ -191,12 +190,17 @@ class SwesarrLidarProjection:
     lidar_raster: Any
     season: str
 
-    def single_band_to_dataframe(self, band_name: str , df_col_name: str) -> pd.DataFrame:
+    def single_band_to_df_reproject(self, band_name: str , df_col_name: str) -> pd.DataFrame:
+        """
+        :param band_name: band name raster values
+        :param df_col_name: names to assign the band in the dataframe
+        :return: (pd.DataFrame) A dataframe of the converted frequency
+        """
         swesarr_raster_data = self.swesarr_raster.sel(band=band_name)
         lidar_swesarr_data = swesarr_raster_data.rio.reproject_match(self.lidar_raster)
         lidar_swesarr_data_df = lidar_swesarr_data.squeeze().drop_vars(["spatial_ref", "band"])
         lidar_swesarr_data_dataframe = lidar_swesarr_data_df.to_dataframe(
-            name=f"{self.season[0]}{df_col_name}").reset_index()
+            name=f"{self.season[0].upper()}{df_col_name}").reset_index()
         lidar_swesarr_data_dataframe.replace(-np.inf, np.nan, inplace=True)
         return lidar_swesarr_data_dataframe
 
@@ -210,23 +214,23 @@ class SwesarrLidarProjection:
             self.flag = False
 
         try:
-            self.lidar_swesarr_data_09vv_dataFrame = self.single_band_to_dataframe(band_name='XVV', df_col_name="09VV")
-            self.lidar_swesarr_data_09vh_dataFrame = self.single_band_to_dataframe(band_name='XVH', df_col_name="09VH")
-            self.lidar_swesarr_data_13vv_dataFrame = self.single_band_to_dataframe(band_name='KlVV', df_col_name="13VV")
-            self.lidar_swesarr_data_13vh_dataFrame = self.single_band_to_dataframe(band_name='KlVH', df_col_name="13VH")
-            self.lidar_swesarr_data_17vv_dataFrame = self.single_band_to_dataframe(band_name='KhVV', df_col_name="17VV")
-            self.lidar_swesarr_data_17vh_dataFrame = self.single_band_to_dataframe(band_name='KhVH', df_col_name="17VH")
+            self.lidar_swesarr_data_09vv_dataFrame = self.single_band_to_df_reproject(band_name='XVV', df_col_name="09VV")
+            self.lidar_swesarr_data_09vh_dataFrame = self.single_band_to_df_reproject(band_name='XVH', df_col_name="09VH")
+            self.lidar_swesarr_data_13vv_dataFrame = self.single_band_to_df_reproject(band_name='KlVV', df_col_name="13VV")
+            self.lidar_swesarr_data_13vh_dataFrame = self.single_band_to_df_reproject(band_name='KlVH', df_col_name="13VH")
+            self.lidar_swesarr_data_17vv_dataFrame = self.single_band_to_df_reproject(band_name='KhVV', df_col_name="17VV")
+            self.lidar_swesarr_data_17vh_dataFrame = self.single_band_to_df_reproject(band_name='KhVH', df_col_name="17VH")
 
             if self.flag:
-                self.lidar_swesarr_data_inc_dataFrame = self.single_band_to_dataframe(band_name='XVVINC', df_col_name="INC")
-                self.lidar_swesarr_data_ofna_dataFrame = self.single_band_to_dataframe(band_name='XVVOFNA', df_col_name="OFNA")
+                self.lidar_swesarr_data_inc_dataFrame = self.single_band_to_df_reproject(band_name='XVVINC', df_col_name="INC")
+                self.lidar_swesarr_data_ofna_dataFrame = self.single_band_to_df_reproject(band_name='XVVOFNA', df_col_name="OFNA")
         except KeyError:
-            self.lidar_swesarr_data_09vv_dataFrame = self.single_band_to_dataframe(band_name='09VV', df_col_name="09VV")
-            self.lidar_swesarr_data_09vh_dataFrame = self.single_band_to_dataframe(band_name='09VH', df_col_name="09VH")
-            self.lidar_swesarr_data_13vv_dataFrame = self.single_band_to_dataframe(band_name='13VV', df_col_name="13VV")
-            self.lidar_swesarr_data_13vh_dataFrame = self.single_band_to_dataframe(band_name='13VH', df_col_name="13VH")
-            self.lidar_swesarr_data_17vv_dataFrame = self.single_band_to_dataframe(band_name='17VV', df_col_name="17VV")
-            self.lidar_swesarr_data_17vh_dataFrame = self.single_band_to_dataframe(band_name='17VH', df_col_name="17VH")
+            self.lidar_swesarr_data_09vv_dataFrame = self.single_band_to_df_reproject(band_name='09VV', df_col_name="09VV")
+            self.lidar_swesarr_data_09vh_dataFrame = self.single_band_to_df_reproject(band_name='09VH', df_col_name="09VH")
+            self.lidar_swesarr_data_13vv_dataFrame = self.single_band_to_df_reproject(band_name='13VV', df_col_name="13VV")
+            self.lidar_swesarr_data_13vh_dataFrame = self.single_band_to_df_reproject(band_name='13VH', df_col_name="13VH")
+            self.lidar_swesarr_data_17vv_dataFrame = self.single_band_to_df_reproject(band_name='17VV', df_col_name="17VV")
+            self.lidar_swesarr_data_17vh_dataFrame = self.single_band_to_df_reproject(band_name='17VH', df_col_name="17VH")
 
 
 
@@ -235,7 +239,16 @@ def combine_swesarr_lidar(fall_flight_directory: str,
                           lidar_flight_path: str,
                           drop_na: bool = True,
                           version:str  = "v1") -> pd.DataFrame:
-
+    """
+    :param fall_flight_directory: (str) Path to the folder containing fall flights to be reprojected and combined.
+    :param winter_flight_directory: (str) Path to the folder containing winter flights to be reprojected and combined.
+    :param lidar_flight_path: (str) Path to the lidar files to be reprojected and combined.
+    :param drop_na: (bool, optional) A flag indicating whether to drop rows containing NaN values after
+                    combining rasters (default is True).
+    :param version:
+    :return: (pd.DataFrame) A DataFrame containing the combined raster data with reprojected coordinates.
+            Rows containing NaN values will be dropped if `drop_na` is set to True.
+    """
 
     fall_swesarr_object = ReadSwesarr(flight_path=fall_flight_directory,
                                       season="Fall", drop_na=False, version=version)
@@ -287,6 +300,3 @@ def combine_swesarr_lidar(fall_flight_directory: str,
 
 if __name__ == "__main__":
     logger.info(f"Nothing to report... Moving on")
-
-
-

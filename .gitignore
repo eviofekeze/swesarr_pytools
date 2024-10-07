@@ -3,6 +3,8 @@
 resources/swesarr_data_v3
 resources/swesarr_data
 resources/lidar_data
+resources/radiometer
+technical_debts
 
 # Byte-compiled / optimized / DLL files
 __pycache__/
