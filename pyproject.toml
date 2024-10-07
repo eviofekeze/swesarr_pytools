@@ -14,7 +14,7 @@ license = {text = "MIT License"}
 authors = [
     {name = "Evi Ofekeze", email = "eviofekeze@u.boisestate.edu"},
     "Hans Peter Marshal",
-    "Dylan R Boyd",
+    "Dylan R Boyd"
 ]
 classifiers = [
     "Intended Audience :: Developers",
