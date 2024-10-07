@@ -12,9 +12,7 @@ keywords = [
 ]
 license = {text = "MIT License"}
 authors = [
-    {name = "Evi Ofekeze", email = "eviofekeze@u.boisestate.edu"},
-    "Hans Peter Marshal",
-    "Dylan R Boyd"
+    {name = "Evi Ofekeze, Dylan R. Boyd and Hans-Peter Marshall", email = "eviofekeze@u.boisestate.edu"}
 ]
 classifiers = [
     "Intended Audience :: Developers",
