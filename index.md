@@ -21,13 +21,13 @@ frequencies (10.65, 18.7, and 36.5 GHz; referred to as X, K, and Ka bands, respe
 with a nominal 45-degree look angle.
 
 To learn more about SWESARR, please see this tutorial delivered during the NASA Earth Science & UW Hackweek 2024:
-https://snowex-2024.hackweek.io/tutorials/swesarr/swesarr_tut.html
+<https://snowex-2024.hackweek.io/tutorials/swesarr/swesarr_tut.html>
 
 For general information about swesarr see:
 
-- https://earth.gsfc.nasa.gov/bio/instruments/snow-water-equivalent-sar-and-radiometer-swesarr
-- https://snow.nasa.gov/instruments/swesarr
-- https://www.thenewtoncorp.com/case-studies/swesarr-snow-water-equivalent-synthetic-aperture-radar-and-radiometer
+- <https://earth.gsfc.nasa.gov/bio/instruments/snow-water-equivalent-sar-and-radiometer-swesarr>
+- <https://snow.nasa.gov/instruments/swesarr>
+- <https://www.thenewtoncorp.com/case-studies/swesarr-snow-water-equivalent-synthetic-aperture-radar-and-radiometer>
 
 ---
 -   Free software: MIT License
