@@ -12,10 +12,10 @@
         <meta name="author" content="eviofekeze">
       
       
-        <link rel="canonical" href="https://eviofekeze.github.io/swesarr_pytools/examples/downloading_data/">
+        <link rel="canonical" href="https://eviofekeze.github.io/swesarr_pytools/examples/downloading_radiom/">
       
       
-        <link rel="prev" href="../data_prep/">
+        <link rel="prev" href="../downloading_sar/">
       
       
         <link rel="next" href="../../swesarr_pytools/">
@@ -26,7 +26,7 @@
     
     
       
-        <title>Downloading data - swesarr_pytools</title>
+        <title>Downloading radiom - swesarr_pytools</title>
       
     
     
@@ -82,7 +82,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#downloading-data" class="md-skip">
+        <a href="#downloading-radiometer-data" class="md-skip">
           Skip to content
         </a>
       
@@ -118,7 +118,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              Downloading data
+              Downloading radiom
             
           </span>
         </div>
@@ -443,11 +443,32 @@
   
   
     <li class="md-nav__item">
-      <a href="../data_prep/" class="md-nav__link">
+      <a href="../processing_sar_data/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
-    Data prep
+    Processing sar data
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../downloading_sar/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Downloading sar
   </span>
   
 
@@ -475,7 +496,7 @@
           
   
   <span class="md-ellipsis">
-    Downloading data
+    Downloading radiom
   </span>
   
 
@@ -486,7 +507,7 @@
         
   
   <span class="md-ellipsis">
-    Downloading data
+    Downloading radiom
   </span>
   
 
@@ -506,28 +527,19 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#downloading-data" class="md-nav__link">
+  <a href="#downloading-radiometer-data" class="md-nav__link">
     <span class="md-ellipsis">
-      Downloading Data
+      Downloading Radiometer Data
     </span>
   </a>
   
-    <nav class="md-nav" aria-label="Downloading Data">
+    <nav class="md-nav" aria-label="Downloading Radiometer Data">
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
   <a href="#retrieving-metadata" class="md-nav__link">
     <span class="md-ellipsis">
       Retrieving Metadata
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#data-download" class="md-nav__link">
-    <span class="md-ellipsis">
-      Data Download
     </span>
   </a>
   
@@ -663,28 +675,19 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#downloading-data" class="md-nav__link">
+  <a href="#downloading-radiometer-data" class="md-nav__link">
     <span class="md-ellipsis">
-      Downloading Data
+      Downloading Radiometer Data
     </span>
   </a>
   
-    <nav class="md-nav" aria-label="Downloading Data">
+    <nav class="md-nav" aria-label="Downloading Radiometer Data">
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
   <a href="#retrieving-metadata" class="md-nav__link">
     <span class="md-ellipsis">
       Retrieving Metadata
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#data-download" class="md-nav__link">
-    <span class="md-ellipsis">
-      Data Download
     </span>
   </a>
   
@@ -708,7 +711,7 @@
               <article class="md-content__inner md-typeset">
                 
 
-    <a href="/swesarr_pytools/examples/downloading_data/downloading_data.ipynb" title="Download Notebook" class="md-content__button md-icon">
+    <a href="/swesarr_pytools/examples/downloading_radiom/downloading_radiom.ipynb" title="Download Notebook" class="md-content__button md-icon">
         <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M5 20h14v-2H5m14-9h-4V3H9v6H5l7 7z"/></svg>
     </a>
 
@@ -720,7 +723,7 @@
   
 
 
-  <h1>Downloading data</h1>
+  <h1>Downloading radiom</h1>
 
 <script>
 (function (global, factory) {
@@ -1163,7 +1166,8 @@ span.linenos.special { color: #000000; background-color: #ffffc0; padding-left: 
 </div>
 <div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
 </div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
-<h2 id="downloading-data"><strong>Downloading Data</strong><a class="anchor-link" href="#downloading-data">¶</a></h2><h3 id="retrieving-metadata"><strong>Retrieving Metadata</strong><a class="anchor-link" href="#retrieving-metadata">¶</a></h3><p>In this notebook, we will demonstrate the core functionality of the <code>AccessSwesarr</code> class. This class provides essential utilities for viewing SWESARR metadata and downloading SWESARR files.</p>
+<h2 id="downloading-radiometer-data"><strong>Downloading Radiometer Data</strong><a class="anchor-link" href="#downloading-radiometer-data">¶</a></h2><h3 id="retrieving-metadata"><strong>Retrieving Metadata</strong><a class="anchor-link" href="#retrieving-metadata">¶</a></h3><p>To download radiometer data from NSIDC, you will need an earthdata account, your earthdata username and password will be used to create a special .netrc file in your home directory assuming you do not already have them stored in a preexisting .netrc (Note you only need to do this once for your computer). This will only be required the first time the <code>AccessRadiometer</code> class is instantiated. Kindly follow the instruction on the prompt to complete <code>.netrc</code> creation. This file stores your username and password, which will be automatically used during the download process. If you encounter an HTTP 401 error while using the `AccessRadiometer, it likely means this file is missing or incorrectly set up. The dot (.) at the beginning of the file name ensures it remains hidden in your file explorer. For more information on .netrc files, click <a href="https://www.gnu.org/software/inetutils/manual/html_node/The-_002enetrc-file.html">here</a> .</p>
+<p>This notebook will check if the file already exists on your system and create one if it's missing.</p>
 </div>
 </div>
 </div>
@@ -1173,7 +1177,7 @@ span.linenos.special { color: #000000; background-color: #ffffc0; padding-left: 
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
 <div class="jp-InputArea jp-Cell-inputArea">
-<div class="jp-InputPrompt jp-InputArea-prompt">In [1]:</div><div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
+<div class="jp-InputPrompt jp-InputArea-prompt">In [3]:</div><div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
 <div class="CodeMirror cm-s-jupyter">
 <div class="zeroclipboard-container">
 <clipboard-copy ,="" aria-label="Copy to Clipboard" for="cell-1">
@@ -1187,19 +1191,21 @@ span.linenos.special { color: #000000; background-color: #ffffc0; padding-left: 
 </clipboard-copy>
 </div>
 <div class="highlight-ipynb hl-python"><pre><span></span><span class="kn">import</span> <span class="nn">sys</span>
+<span class="kn">import</span> <span class="nn">pprint</span>
 <span class="n">sys</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">"../"</span><span class="p">)</span>
 
 <span class="c1"># import the Access Swesarr Class from the access_swesarr submodule</span>
-<span class="kn">from</span> <span class="nn">swesarr_pytools.access_swesarr</span> <span class="kn">import</span> <span class="n">AccessSwesarr</span>
+<span class="kn">from</span> <span class="nn">swesarr_pytools.access_swesarr</span> <span class="kn">import</span> <span class="n">AccessRadiometer</span>
 
 <span class="c1"># Optional import for data</span>
 <span class="kn">from</span> <span class="nn">datetime</span> <span class="kn">import</span> <span class="n">date</span>
 </pre></div>
 <div class="clipboard-copy-txt" id="cell-1">import sys
+import pprint
 sys.path.append("../")
 
 # import the Access Swesarr Class from the access_swesarr submodule
-from swesarr_pytools.access_swesarr import AccessSwesarr
+from swesarr_pytools.access_swesarr import AccessRadiometer
 
 # Optional import for data
 from datetime import date</div>
@@ -1208,27 +1214,13 @@ from datetime import date</div>
 </div>
 </div>
 </div>
-</div>
-<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=49019b57">
-<div class="jp-Cell-inputWrapper" tabindex="0">
-<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
-</div>
-<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
-</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
-<p>The following cells demonstrate how to view metadata and search for flights within a specific time range.</p>
-<p><code>data_meta</code>: Provides key-value pairs that map flight paths to their corresponding dates. <br/>
-<code>flight_name</code> : Gives a complete list of flight paths <br/>
-<code>flight_dates</code>: Give a complete list of flight dates</p>
-</div>
-</div>
-</div>
-</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell">
-<div class="jp-Cell jp-CodeCell jp-Notebook-cell" id="cell-id=7ddc67d0b109b405">
+</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell jp-mod-noOutputs">
+<div class="jp-Cell jp-CodeCell jp-Notebook-cell jp-mod-noOutputs" id="cell-id=e704ff89">
 <div class="jp-Cell-inputWrapper" tabindex="0">
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
 <div class="jp-InputArea jp-Cell-inputArea">
-<div class="jp-InputPrompt jp-InputArea-prompt">In [2]:</div><div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
+<div class="jp-InputPrompt jp-InputArea-prompt">In [4]:</div><div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
 <div class="CodeMirror cm-s-jupyter">
 <div class="zeroclipboard-container">
 <clipboard-copy ,="" aria-label="Copy to Clipboard" for="cell-2">
@@ -1241,68 +1233,34 @@ from datetime import date</div>
 </div>
 </clipboard-copy>
 </div>
-<div class="highlight-ipynb hl-python"><pre><span></span><span class="n">swesarr_object</span> <span class="o">=</span> <span class="n">AccessSwesarr</span><span class="p">()</span> <span class="c1"># instantiates an object of the Access Swesarr Class</span>
-
-<span class="n">swesarr_metadata</span> <span class="o">=</span> <span class="n">swesarr_object</span><span class="o">.</span><span class="n">data_meta</span> <span class="c1"># The meta data can be retrieve by simply calling the data_meta</span>
-<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">"Flight meta key value pair: </span><span class="si">{</span><span class="n">swesarr_metadata</span><span class="si">}</span><span class="s2">"</span><span class="p">)</span>
-
-<span class="n">flight_paths</span> <span class="o">=</span> <span class="n">swesarr_object</span><span class="o">.</span><span class="n">flight_names</span>
-<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">"Flight Paths: </span><span class="si">{</span><span class="n">flight_paths</span><span class="si">}</span><span class="s2">"</span><span class="p">)</span>
-
-<span class="c1">#Retrieve flight date</span>
-<span class="n">flight_dates</span> <span class="o">=</span> <span class="n">swesarr_object</span><span class="o">.</span><span class="n">flight_dates</span>
-<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">"Flight Dates: </span><span class="si">{</span><span class="n">flight_dates</span><span class="si">}</span><span class="s2">"</span><span class="p">)</span>
+<div class="highlight-ipynb hl-python"><pre><span></span><span class="c1"># First let us instantiate the class</span>
+<span class="n">radiom</span> <span class="o">=</span> <span class="n">AccessRadiometer</span><span class="p">()</span>
 </pre></div>
-<div class="clipboard-copy-txt" id="cell-2">swesarr_object = AccessSwesarr() # instantiates an object of the Access Swesarr Class
-
-swesarr_metadata = swesarr_object.data_meta # The meta data can be retrieve by simply calling the data_meta
-print(f"Flight meta key value pair: {swesarr_metadata}")
-
-flight_paths = swesarr_object.flight_names
-print(f"Flight Paths: {flight_paths}")
-
-#Retrieve flight date
-flight_dates = swesarr_object.flight_dates
-print(f"Flight Dates: {flight_dates}")</div>
-</div>
-</div>
-</div>
-</div>
-<div class="jp-Cell-outputWrapper">
-<div class="jp-Collapser jp-OutputCollapser jp-Cell-outputCollapser">
-</div>
-<div class="jp-OutputArea jp-Cell-outputArea">
-<div class="jp-OutputArea-child">
-<div class="jp-OutputPrompt jp-OutputArea-prompt"></div>
-<div class="jp-RenderedText jp-OutputArea-output" data-mime-type="text/plain" tabindex="0">
-<pre>Flight meta key value pair: {'GRMCT1_13801_19005_010_191106_225_XX_01/': datetime.date(2019, 11, 6), 'GRMCT1_13802_19004_013_191105_225_XX_01/': datetime.date(2019, 11, 5), 'GRMCT1_13802_19005_016_191106_225_XX_01/': datetime.date(2019, 11, 6), 'GRMCT1_13803_19004_019_191105_225_XX_01/': datetime.date(2019, 11, 5), 'GRMCT2_13802_20006_012_200210_225_XX_01/': datetime.date(2020, 2, 10), 'GRMCT2_13802_20008_011_200212_225_XX_01/': datetime.date(2020, 2, 12), 'GRMCT2_13802_20009_004_200212_225_XX_01/': datetime.date(2020, 2, 12), 'GRMCT2_13804_20007_022_200211_225_XX_01/': datetime.date(2020, 2, 11), 'GRMCT2_13804_20008_015_200212_225_XX_01/': datetime.date(2020, 2, 12), 'GRMCT2_13804_20009_008_200212_225_XX_01/': datetime.date(2020, 2, 12), 'GRMCT2_13806_20007_026_200211_225_XX_01/': datetime.date(2020, 2, 11), 'GRMCT2_13806_20008_019_200212_225_XX_01/': datetime.date(2020, 2, 12), 'GRMCT2_31601_20006_011_200210_225_XX_01/': datetime.date(2020, 2, 10), 'GRMCT2_31801_20007_016_200211_225_XX_01/': datetime.date(2020, 2, 11), 'GRMCT2_31801_20008_009_200212_225_XX_01/': datetime.date(2020, 2, 12), 'GRMCT2_31803_20007_020_200211_225_XX_01/': datetime.date(2020, 2, 11), 'GRMCT2_31803_20008_013_200212_225_XX_01/': datetime.date(2020, 2, 12), 'GRMCT2_31803_20009_006_200212_225_XX_01/': datetime.date(2020, 2, 12), 'GRMCT2_31805_20008_017_200212_225_XX_01/': datetime.date(2020, 2, 12), 'GRMCT2_31901_20009_002_200212_225_XX_01/': datetime.date(2020, 2, 12), 'GRMCT2_31905_20007_024_200211_225_XX_01/': datetime.date(2020, 2, 11), 'GRMNT1_09302_20006_009_200210_225_XX_01/': datetime.date(2020, 2, 10), 'GRMNT1_09401_19005_006_191106_225_XX_01/': datetime.date(2019, 11, 6), 'GRMNT1_09401_20006_005_200210_225_XX_01/': datetime.date(2020, 2, 10), 'GRMNT1_09401_20007_007_200211_225_XX_01/': datetime.date(2020, 2, 11), 'GRMNT1_09402_19004_009_191105_225_XX_01/': datetime.date(2019, 11, 5), 'GRMNT1_09402_19005_012_191106_225_XX_01/': datetime.date(2019, 11, 6), 'GRMNT1_09402_20007_010_200211_225_XX_01/': datetime.date(2020, 2, 11), 'GRMNT1_09402_20008_027_200212_225_XX_01/': datetime.date(2020, 2, 12), 'GRMNT1_09403_19004_015_191105_225_XX_01/': datetime.date(2019, 11, 5), 'GRMNT1_09403_19005_018_191106_225_XX_01/': datetime.date(2019, 11, 6), 'GRMNT1_09403_20007_014_200211_225_XX_01/': datetime.date(2020, 2, 11), 'GRMNT1_09403_20008_031_200212_225_XX_01/': datetime.date(2020, 2, 12), 'GRMNT1_09501_20008_023_200212_225_XX_01/': datetime.date(2020, 2, 12), 'GRMNT1_09502_20007_010_200211_225_XX_01/': datetime.date(2020, 2, 11), 'GRMST1_27302_20006_007_200210_225_XX_01/': datetime.date(2020, 2, 10), 'GRMST1_27401_19003_007_191104_225_XX_01/': datetime.date(2019, 11, 4), 'GRMST1_27401_19004_005_191105_225_XX_01/': datetime.date(2019, 11, 5), 'GRMST1_27401_19005_008_191106_225_XX_01/': datetime.date(2019, 11, 6), 'GRMST1_27401_20007_005_200211_225_XX_01/': datetime.date(2020, 2, 11), 'GRMST1_27401_20008_021_200212_225_XX_01/': datetime.date(2020, 2, 12), 'GRMST1_27402_19004_011_191105_225_XX_01/': datetime.date(2019, 11, 5), 'GRMST1_27402_19005_014_191106_225_XX_01/': datetime.date(2019, 11, 6), 'GRMST1_27402_20008_025_200212_225_XX_01/': datetime.date(2020, 2, 12), 'GRMST1_27403_19004_017_191105_225_XX_01/': datetime.date(2019, 11, 5), 'GRMST1_27403_20007_012_200211_225_XX_01/': datetime.date(2020, 2, 11), 'GRMST1_27403_20008_029_200212_225_XX_01/': datetime.date(2020, 2, 12), 'GRMST1_27501_20006_003_200210_225_XX_01/': datetime.date(2020, 2, 10), 'GRMST1_27502_20007_009_200211_225_XX_01/': datetime.date(2020, 2, 11)}
-Flight Paths: ['GRMCT1_13801_19005_010_191106_225_XX_01/', 'GRMCT1_13802_19004_013_191105_225_XX_01/', 'GRMCT1_13802_19005_016_191106_225_XX_01/', 'GRMCT1_13803_19004_019_191105_225_XX_01/', 'GRMCT2_13802_20006_012_200210_225_XX_01/', 'GRMCT2_13802_20008_011_200212_225_XX_01/', 'GRMCT2_13802_20009_004_200212_225_XX_01/', 'GRMCT2_13804_20007_022_200211_225_XX_01/', 'GRMCT2_13804_20008_015_200212_225_XX_01/', 'GRMCT2_13804_20009_008_200212_225_XX_01/', 'GRMCT2_13806_20007_026_200211_225_XX_01/', 'GRMCT2_13806_20008_019_200212_225_XX_01/', 'GRMCT2_31601_20006_011_200210_225_XX_01/', 'GRMCT2_31801_20007_016_200211_225_XX_01/', 'GRMCT2_31801_20008_009_200212_225_XX_01/', 'GRMCT2_31803_20007_020_200211_225_XX_01/', 'GRMCT2_31803_20008_013_200212_225_XX_01/', 'GRMCT2_31803_20009_006_200212_225_XX_01/', 'GRMCT2_31805_20008_017_200212_225_XX_01/', 'GRMCT2_31901_20009_002_200212_225_XX_01/', 'GRMCT2_31905_20007_024_200211_225_XX_01/', 'GRMNT1_09302_20006_009_200210_225_XX_01/', 'GRMNT1_09401_19005_006_191106_225_XX_01/', 'GRMNT1_09401_20006_005_200210_225_XX_01/', 'GRMNT1_09401_20007_007_200211_225_XX_01/', 'GRMNT1_09402_19004_009_191105_225_XX_01/', 'GRMNT1_09402_19005_012_191106_225_XX_01/', 'GRMNT1_09402_20007_010_200211_225_XX_01/', 'GRMNT1_09402_20008_027_200212_225_XX_01/', 'GRMNT1_09403_19004_015_191105_225_XX_01/', 'GRMNT1_09403_19005_018_191106_225_XX_01/', 'GRMNT1_09403_20007_014_200211_225_XX_01/', 'GRMNT1_09403_20008_031_200212_225_XX_01/', 'GRMNT1_09501_20008_023_200212_225_XX_01/', 'GRMNT1_09502_20007_010_200211_225_XX_01/', 'GRMST1_27302_20006_007_200210_225_XX_01/', 'GRMST1_27401_19003_007_191104_225_XX_01/', 'GRMST1_27401_19004_005_191105_225_XX_01/', 'GRMST1_27401_19005_008_191106_225_XX_01/', 'GRMST1_27401_20007_005_200211_225_XX_01/', 'GRMST1_27401_20008_021_200212_225_XX_01/', 'GRMST1_27402_19004_011_191105_225_XX_01/', 'GRMST1_27402_19005_014_191106_225_XX_01/', 'GRMST1_27402_20008_025_200212_225_XX_01/', 'GRMST1_27403_19004_017_191105_225_XX_01/', 'GRMST1_27403_20007_012_200211_225_XX_01/', 'GRMST1_27403_20008_029_200212_225_XX_01/', 'GRMST1_27501_20006_003_200210_225_XX_01/', 'GRMST1_27502_20007_009_200211_225_XX_01/']
-Flight Dates: [datetime.date(2019, 11, 6), datetime.date(2019, 11, 5), datetime.date(2019, 11, 6), datetime.date(2019, 11, 5), datetime.date(2020, 2, 10), datetime.date(2020, 2, 12), datetime.date(2020, 2, 12), datetime.date(2020, 2, 11), datetime.date(2020, 2, 12), datetime.date(2020, 2, 12), datetime.date(2020, 2, 11), datetime.date(2020, 2, 12), datetime.date(2020, 2, 10), datetime.date(2020, 2, 11), datetime.date(2020, 2, 12), datetime.date(2020, 2, 11), datetime.date(2020, 2, 12), datetime.date(2020, 2, 12), datetime.date(2020, 2, 12), datetime.date(2020, 2, 12), datetime.date(2020, 2, 11), datetime.date(2020, 2, 10), datetime.date(2019, 11, 6), datetime.date(2020, 2, 10), datetime.date(2020, 2, 11), datetime.date(2019, 11, 5), datetime.date(2019, 11, 6), datetime.date(2020, 2, 11), datetime.date(2020, 2, 12), datetime.date(2019, 11, 5), datetime.date(2019, 11, 6), datetime.date(2020, 2, 11), datetime.date(2020, 2, 12), datetime.date(2020, 2, 12), datetime.date(2020, 2, 11), datetime.date(2020, 2, 10), datetime.date(2019, 11, 4), datetime.date(2019, 11, 5), datetime.date(2019, 11, 6), datetime.date(2020, 2, 11), datetime.date(2020, 2, 12), datetime.date(2019, 11, 5), datetime.date(2019, 11, 6), datetime.date(2020, 2, 12), datetime.date(2019, 11, 5), datetime.date(2020, 2, 11), datetime.date(2020, 2, 12), datetime.date(2020, 2, 10), datetime.date(2020, 2, 11)]
-</pre>
+<div class="clipboard-copy-txt" id="cell-2"># First let us instantiate the class
+radiom = AccessRadiometer()</div>
 </div>
 </div>
 </div>
 </div>
 </div>
 </div>
-<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=c6555fe6126d1808">
+<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=7adb4fd9">
 <div class="jp-Cell-inputWrapper" tabindex="0">
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
 <div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
 </div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
-<p><strong>Searching for dates within a range</strong></p>
-<p>To search within a specific date range, use the available_date_within_range method by specifying a start and end date. You can enter the dates in string using the standard American date format or use the datetime library's date format. The method returns a list of all flight paths available within the specified range.</p>
+<p>Let us view some available radiometer data</p>
 </div>
 </div>
 </div>
 </div><div class="jp-Cell jp-CodeCell jp-Notebook-cell">
-<div class="jp-Cell jp-CodeCell jp-Notebook-cell" id="cell-id=58c700db466cc669">
+<div class="jp-Cell jp-CodeCell jp-Notebook-cell" id="cell-id=5f4698e2">
 <div class="jp-Cell-inputWrapper" tabindex="0">
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
 <div class="jp-InputArea jp-Cell-inputArea">
-<div class="jp-InputPrompt jp-InputArea-prompt">In [3]:</div><div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
+<div class="jp-InputPrompt jp-InputArea-prompt">In [5]:</div><div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
 <div class="CodeMirror cm-s-jupyter">
 <div class="zeroclipboard-container">
 <clipboard-copy ,="" aria-label="Copy to Clipboard" for="cell-3">
@@ -1315,21 +1273,11 @@ Flight Dates: [datetime.date(2019, 11, 6), datetime.date(2019, 11, 5), datetime.
 </div>
 </clipboard-copy>
 </div>
-<div class="highlight-ipynb hl-python"><pre><span></span><span class="n">available_dates</span> <span class="o">=</span> <span class="n">swesarr_object</span><span class="o">.</span><span class="n">available_date_within_range</span><span class="p">(</span><span class="n">start_date</span><span class="o">=</span><span class="n">date</span><span class="p">(</span><span class="mi">2019</span><span class="p">,</span> <span class="mi">11</span><span class="p">,</span> <span class="mi">5</span><span class="p">),</span>
-                                               <span class="n">end_date</span><span class="o">=</span><span class="n">date</span><span class="p">(</span><span class="mi">2019</span><span class="p">,</span> <span class="mi">11</span><span class="p">,</span> <span class="mi">6</span><span class="p">))</span>
-<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">"Available flight: </span><span class="si">{</span><span class="n">available_dates</span><span class="si">}</span><span class="s2">"</span><span class="p">)</span>
-
-<span class="n">available_dates_string</span> <span class="o">=</span> <span class="n">swesarr_object</span><span class="o">.</span><span class="n">available_date_within_range</span><span class="p">(</span><span class="n">start_date</span><span class="o">=</span><span class="s2">"11/5/19"</span><span class="p">,</span>
-                                               <span class="n">end_date</span><span class="o">=</span><span class="s2">"11/6/19"</span><span class="p">)</span>
-<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">"Available flight: </span><span class="si">{</span><span class="n">available_dates_string</span><span class="si">}</span><span class="s2">"</span><span class="p">)</span>
+<div class="highlight-ipynb hl-python"><pre><span></span><span class="n">radiom_meta</span> <span class="o">=</span> <span class="n">radiom</span><span class="o">.</span><span class="n">radiometer_meta</span>
+<span class="n">pprint</span><span class="o">.</span><span class="n">pprint</span><span class="p">(</span><span class="n">radiom_meta</span><span class="p">)</span>
 </pre></div>
-<div class="clipboard-copy-txt" id="cell-3">available_dates = swesarr_object.available_date_within_range(start_date=date(2019, 11, 5),
-                                               end_date=date(2019, 11, 6))
-print(f"Available flight: {available_dates}")
-
-available_dates_string = swesarr_object.available_date_within_range(start_date="11/5/19",
-                                               end_date="11/6/19")
-print(f"Available flight: {available_dates_string}")</div>
+<div class="clipboard-copy-txt" id="cell-3">radiom_meta = radiom.radiometer_meta
+pprint.pprint(radiom_meta)</div>
 </div>
 </div>
 </div>
@@ -1341,8 +1289,35 @@ print(f"Available flight: {available_dates_string}")</div>
 <div class="jp-OutputArea-child">
 <div class="jp-OutputPrompt jp-OutputArea-prompt"></div>
 <div class="jp-RenderedText jp-OutputArea-output" data-mime-type="text/plain" tabindex="0">
-<pre>Available flight: [datetime.date(2019, 11, 6), datetime.date(2019, 11, 5), datetime.date(2019, 11, 6), datetime.date(2019, 11, 5), datetime.date(2019, 11, 6), datetime.date(2019, 11, 5), datetime.date(2019, 11, 6), datetime.date(2019, 11, 5), datetime.date(2019, 11, 6), datetime.date(2019, 11, 5), datetime.date(2019, 11, 6), datetime.date(2019, 11, 5), datetime.date(2019, 11, 6), datetime.date(2019, 11, 5)]
-Available flight: [datetime.date(2019, 11, 6), datetime.date(2019, 11, 5), datetime.date(2019, 11, 6), datetime.date(2019, 11, 5), datetime.date(2019, 11, 6), datetime.date(2019, 11, 5), datetime.date(2019, 11, 6), datetime.date(2019, 11, 5), datetime.date(2019, 11, 6), datetime.date(2019, 11, 5), datetime.date(2019, 11, 6), datetime.date(2019, 11, 5), datetime.date(2019, 11, 6), datetime.date(2019, 11, 5)]
+<pre>{'2020.02.10': ['SNEX20_SWESARR_TB_GRMST1_27601_20006_000_200210_XKKa225H_v01.csv'],
+ '2020.02.11': ['SNEX20_SWESARR_TB_GRMCT2_13801_20007_000_200211_XKKa225H_v01.csv',
+                'SNEX20_SWESARR_TB_GRMST1_27403_20007_000_200211_XKKa225H_v01.csv',
+                'SNEX20_SWESARR_TB_GRMNT1_09602_20007_000_200211_XKKa225H_v01.csv',
+                'SNEX20_SWESARR_TB_GRMCT2_13802_20007_000_200211_XKKa225H_v01.csv',
+                'SNEX20_SWESARR_TB_GRMCT2_31902_20007_000_200211_XKKa225H_v01.csv',
+                'SNEX20_SWESARR_TB_GRMST1_27501_20007_000_200211_XKKa225H_v01.csv',
+                'SNEX20_SWESARR_TB_GRMST1_27502_20007_000_200211_XKKa225H_v01.csv',
+                'SNEX20_SWESARR_TB_GRMCT2_13803_20007_000_200211_XKKa225H_v01.csv',
+                'SNEX20_SWESARR_TB_GRMNT1_09503_20007_000_200211_XKKa225H_v01.csv',
+                'SNEX20_SWESARR_TB_GRMCT2_31901_20007_000_200211_XKKa225H_v01.csv',
+                'SNEX20_SWESARR_TB_GRMNT1_09501_20007_000_200211_XKKa225H_v01.csv',
+                'SNEX20_SWESARR_TB_GRMCT2_31803_20007_000_200211_XKKa225H_v01.csv'],
+ '2020.02.12': ['SNEX20_SWESARR_TB_GRMCT2_31903_20008_000_200212_XKKa225H_v01.csv',
+                'SNEX20_SWESARR_TB_GRMST1_27503_20008_000_200212_XKKa225H_v01.csv',
+                'SNEX20_SWESARR_TB_GRMCT2_31901_20009_000_200212_XKKa225H_v01.csv',
+                'SNEX20_SWESARR_TB_GRMCT2_31901_20008_000_200212_XKKa225H_v01.csv',
+                'SNEX20_SWESARR_TB_GRMCT2_13802_20009_000_200212_XKKa225H_v01.csv',
+                'SNEX20_SWESARR_TB_GRMCT2_31902_20009_000_200212_XKKa225H_v01.csv',
+                'SNEX20_SWESARR_TB_GRMNT1_09502_20008_000_200212_XKKa225H_v01.csv',
+                'SNEX20_SWESARR_TB_GRMST1_27502_20008_000_200212_XKKa225H_v01.csv',
+                'SNEX20_SWESARR_TB_GRMNT1_09503_20008_000_200212_XKKa225H_v01.csv',
+                'SNEX20_SWESARR_TB_GRMCT2_13903_20008_000_200212_XKKa225H_v01.csv',
+                'SNEX20_SWESARR_TB_GRMCT2_31902_20008_000_200212_XKKa225H_v01.csv',
+                'SNEX20_SWESARR_TB_GRMST1_27401_20008_000_200212_XKKa225H_v01.csv',
+                'SNEX20_SWESARR_TB_GRMCT2_13902_20008_000_200212_XKKa225H_v01.csv',
+                'SNEX20_SWESARR_TB_GRMNT1_09601_20008_000_200212_XKKa225H_v01.csv',
+                'SNEX20_SWESARR_TB_GRMCT2_13901_20008_000_200212_XKKa225H_v01.csv',
+                'SNEX20_SWESARR_TB_GRMCT2_13801_20009_000_200212_XKKa225H_v01.csv']}
 </pre>
 </div>
 </div>
@@ -1350,25 +1325,25 @@ Available flight: [datetime.date(2019, 11, 6), datetime.date(2019, 11, 5), datet
 </div>
 </div>
 </div>
-<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=97119074f420534c">
+<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=d2c94bdd">
 <div class="jp-Cell-inputWrapper" tabindex="0">
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
 <div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
 </div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
-<h3 id="data-download"><strong>Data Download</strong><a class="anchor-link" href="#data-download">¶</a></h3><p>The <code>AccessSwesarr</code> class also provides functionality to download SWESARR data, either for all frequency bands of a specified flight path or for a single frequency from a selected flight line. The <code>download_data</code> function allows users to specify a flight path and either retrieve all associated frequency bands in one go or focus on downloading data for a specific frequency. This flexibility makes it convenient for users to access the SWESARR data they need based on their particular analysis requirements.
-You will need to provide a destination folder in addition to the fight path of choice. See help below.</p>
-<p>Additionally the <code>download_all_data</code> function can be called to download all flight path. See help below</p>
+<p><strong>Downloading data</strong></p>
+<p>We can download any of these flight lines seen in the meta, or all flight path from a specific day, or the entire three day period.</p>
+<p>In this example we will use the same instance of the radiometer class we instantiated earlier</p>
 </div>
 </div>
 </div>
 </div><div class="jp-Cell jp-CodeCell jp-Notebook-cell">
-<div class="jp-Cell jp-CodeCell jp-Notebook-cell" id="cell-id=3cefa486">
+<div class="jp-Cell jp-CodeCell jp-Notebook-cell" id="cell-id=6bf257cc">
 <div class="jp-Cell-inputWrapper" tabindex="0">
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
 <div class="jp-InputArea jp-Cell-inputArea">
-<div class="jp-InputPrompt jp-InputArea-prompt">In [4]:</div><div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
+<div class="jp-InputPrompt jp-InputArea-prompt">In [6]:</div><div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
 <div class="CodeMirror cm-s-jupyter">
 <div class="zeroclipboard-container">
 <clipboard-copy ,="" aria-label="Copy to Clipboard" for="cell-4">
@@ -1381,21 +1356,21 @@ You will need to provide a destination folder in addition to the fight path of c
 </div>
 </clipboard-copy>
 </div>
-<div class="highlight-ipynb hl-python"><pre><span></span><span class="n">uncomment</span> <span class="n">the</span> <span class="n">following</span> <span class="n">to</span> <span class="n">download</span> <span class="n">data</span>
+<div class="highlight-ipynb hl-python"><pre><span></span><span class="c1"># Specify any flight line</span>
+<span class="n">example_radiom</span> <span class="o">=</span> <span class="s2">"SNEX20_SWESARR_TB_GRMCT2_31901_20007_000_200211_XKKa225H_v01.csv"</span>
 
+<span class="c1">#Specify a destination folder on you computer </span>
+<span class="n">destination_on_computer</span> <span class="o">=</span> <span class="s2">"../resources/radiometer"</span>
 
-<span class="n">swesarr_object</span><span class="o">.</span><span class="n">download_data</span><span class="p">(</span><span class="n">flight_path</span><span class="o">=</span><span class="s2">"GRMCT1_13801_19005_010_191106_225_XX_01"</span><span class="p">,</span>
-                             <span class="n">folder_name</span><span class="o">=</span><span class="s2">"./swesarr_pytool/resources/swesarr_data/"</span><span class="p">,</span>
-                             <span class="n">dem</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span>
-                             <span class="n">band</span><span class="o">=</span><span class="s2">"all"</span><span class="p">)</span>
+<span class="n">radiom</span><span class="o">.</span><span class="n">download_radiometer</span><span class="p">(</span><span class="n">file_name</span><span class="o">=</span><span class="n">example_radiom</span><span class="p">,</span> <span class="n">destination_folder</span><span class="o">=</span><span class="n">destination_on_computer</span><span class="p">)</span>
 </pre></div>
-<div class="clipboard-copy-txt" id="cell-4">uncomment the following to download data
+<div class="clipboard-copy-txt" id="cell-4"># Specify any flight line
+example_radiom = "SNEX20_SWESARR_TB_GRMCT2_31901_20007_000_200211_XKKa225H_v01.csv"
 
+#Specify a destination folder on you computer 
+destination_on_computer = "../resources/radiometer"
 
-swesarr_object.download_data(flight_path="GRMCT1_13801_19005_010_191106_225_XX_01",
-                             folder_name="./swesarr_pytool/resources/swesarr_data/",
-                             dem=False,
-                             band="all")</div>
+radiom.download_radiometer(file_name=example_radiom, destination_folder=destination_on_computer)</div>
 </div>
 </div>
 </div>
@@ -1407,25 +1382,31 @@ swesarr_object.download_data(flight_path="GRMCT1_13801_19005_010_191106_225_XX_0
 <div class="jp-OutputArea-child">
 <div class="jp-OutputPrompt jp-OutputArea-prompt"></div>
 <div class="jp-RenderedText jp-OutputArea-output" data-mime-type="application/vnd.jupyter.stderr" tabindex="0">
-<pre>ACCESS_SWESARR - 2024-10-01 08:51:35,267 - INFO - Downloaded: https://glihtdata.gsfc.nasa.gov/files/radar/SWESARR/prerelease/GRMCT1_13801_19005_010_191106_225_XX_01/GRMCT1_13801_19005_010_191106_09225VH_XX_01.tif
-ACCESS_SWESARR - 2024-10-01 08:51:37,754 - INFO - Downloaded: https://glihtdata.gsfc.nasa.gov/files/radar/SWESARR/prerelease/GRMCT1_13801_19005_010_191106_225_XX_01/GRMCT1_13801_19005_010_191106_09225VV_XX_01.tif
-ACCESS_SWESARR - 2024-10-01 08:51:40,509 - INFO - Downloaded: https://glihtdata.gsfc.nasa.gov/files/radar/SWESARR/prerelease/GRMCT1_13801_19005_010_191106_225_XX_01/GRMCT1_13801_19005_010_191106_13225VH_XX_01.tif
-ACCESS_SWESARR - 2024-10-01 08:51:42,877 - INFO - Downloaded: https://glihtdata.gsfc.nasa.gov/files/radar/SWESARR/prerelease/GRMCT1_13801_19005_010_191106_225_XX_01/GRMCT1_13801_19005_010_191106_13225VV_XX_01.tif
-ACCESS_SWESARR - 2024-10-01 08:51:45,396 - INFO - Downloaded: https://glihtdata.gsfc.nasa.gov/files/radar/SWESARR/prerelease/GRMCT1_13801_19005_010_191106_225_XX_01/GRMCT1_13801_19005_010_191106_17225VH_XX_01.tif
-ACCESS_SWESARR - 2024-10-01 08:51:47,750 - INFO - Downloaded: https://glihtdata.gsfc.nasa.gov/files/radar/SWESARR/prerelease/GRMCT1_13801_19005_010_191106_225_XX_01/GRMCT1_13801_19005_010_191106_17225VV_XX_01.tif
+<pre>ACCESS_SWESARR - 2024-10-07 21:10:35,913 - INFO - Downloaded: SNEX20_SWESARR_TB_GRMCT2_31901_20007_000_200211_XKKa225H_v01.csv
 </pre>
 </div>
 </div>
 </div>
 </div>
 </div>
+</div>
+<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=2b6efe5d">
+<div class="jp-Cell-inputWrapper" tabindex="0">
+<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
+</div>
+<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
+</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
+<p>In this example we will use the same instance of the radiometer class we instantiated earlier to download to the entire data set.</p>
+</div>
+</div>
+</div>
 </div><div class="jp-Cell jp-CodeCell jp-Notebook-cell">
-<div class="jp-Cell jp-CodeCell jp-Notebook-cell" id="cell-id=8e806e4f">
+<div class="jp-Cell jp-CodeCell jp-Notebook-cell" id="cell-id=3dd19d38">
 <div class="jp-Cell-inputWrapper" tabindex="0">
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
 <div class="jp-InputArea jp-Cell-inputArea">
-<div class="jp-InputPrompt jp-InputArea-prompt">In [5]:</div><div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
+<div class="jp-InputPrompt jp-InputArea-prompt">In [7]:</div><div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
 <div class="CodeMirror cm-s-jupyter">
 <div class="zeroclipboard-container">
 <clipboard-copy ,="" aria-label="Copy to Clipboard" for="cell-5">
@@ -1438,9 +1419,9 @@ ACCESS_SWESARR - 2024-10-01 08:51:47,750 - INFO - Downloaded: https://glihtdata.
 </div>
 </clipboard-copy>
 </div>
-<div class="highlight-ipynb hl-python"><pre><span></span><span class="n">help</span><span class="p">(</span><span class="n">swesarr_object</span><span class="o">.</span><span class="n">download_data</span><span class="p">)</span>
+<div class="highlight-ipynb hl-python"><pre><span></span><span class="n">radiom</span><span class="o">.</span><span class="n">bulk_download_radiometer</span><span class="p">(</span><span class="n">destination_folder</span><span class="o">=</span><span class="n">destination_on_computer</span><span class="p">,</span> <span class="n">day</span><span class="o">=</span><span class="s2">"all"</span><span class="p">)</span>
 </pre></div>
-<div class="clipboard-copy-txt" id="cell-5">help(swesarr_object.download_data)</div>
+<div class="clipboard-copy-txt" id="cell-5">radiom.bulk_download_radiometer(destination_folder=destination_on_computer, day="all")</div>
 </div>
 </div>
 </div>
@@ -1451,41 +1432,60 @@ ACCESS_SWESARR - 2024-10-01 08:51:47,750 - INFO - Downloaded: https://glihtdata.
 <div class="jp-OutputArea jp-Cell-outputArea">
 <div class="jp-OutputArea-child">
 <div class="jp-OutputPrompt jp-OutputArea-prompt"></div>
-<div class="jp-RenderedText jp-OutputArea-output" data-mime-type="text/plain" tabindex="0">
-<pre>Help on method download_data in module swesarr_pytools.access_swesarr:
-
-download_data(flight_path: str, folder_name: str, band: str = 'all', dem: bool = False) -&gt; None method of swesarr_pytools.access_swesarr.AccessSwesarr instance
-    Downloads data for a specified flight path.
-
-    This method downloads the associated data into the specified folder. It also
-    allows for filtering by band and includes an option to download DEM (Digital
-    Elevation Model) data.
-
-    :param flight_path: str
-        The name of the flight path to be downloaded
-    :param folder_name: str
-        The name of the folder where the downloaded data will be stored
-    :param band: str, optional
-        Specifies the band to download (e.g., "X", "KuLo", "KuHi"). Defaults to "all",
-        which downloads all available bands
-    :param dem: bool, optional
-        If True, the Digital Elevation Model (DEM) data is downloaded along with the
-        band data. Defaults to False
-    :return: None
-
+<div class="jp-RenderedText jp-OutputArea-output" data-mime-type="application/vnd.jupyter.stderr" tabindex="0">
+<pre>ACCESS_SWESARR - 2024-10-07 21:10:38,340 - INFO - Downloaded: SNEX20_SWESARR_TB_GRMST1_27601_20006_000_200210_XKKa225H_v01.csv
+ACCESS_SWESARR - 2024-10-07 21:10:40,698 - INFO - Downloaded: SNEX20_SWESARR_TB_GRMCT2_13801_20007_000_200211_XKKa225H_v01.csv
+ACCESS_SWESARR - 2024-10-07 21:10:43,077 - INFO - Downloaded: SNEX20_SWESARR_TB_GRMST1_27403_20007_000_200211_XKKa225H_v01.csv
+ACCESS_SWESARR - 2024-10-07 21:10:45,363 - INFO - Downloaded: SNEX20_SWESARR_TB_GRMNT1_09602_20007_000_200211_XKKa225H_v01.csv
+ACCESS_SWESARR - 2024-10-07 21:10:49,293 - INFO - Downloaded: SNEX20_SWESARR_TB_GRMCT2_13802_20007_000_200211_XKKa225H_v01.csv
+ACCESS_SWESARR - 2024-10-07 21:10:51,560 - INFO - Downloaded: SNEX20_SWESARR_TB_GRMCT2_31902_20007_000_200211_XKKa225H_v01.csv
+ACCESS_SWESARR - 2024-10-07 21:10:53,798 - INFO - Downloaded: SNEX20_SWESARR_TB_GRMST1_27501_20007_000_200211_XKKa225H_v01.csv
+ACCESS_SWESARR - 2024-10-07 21:10:56,114 - INFO - Downloaded: SNEX20_SWESARR_TB_GRMST1_27502_20007_000_200211_XKKa225H_v01.csv
+ACCESS_SWESARR - 2024-10-07 21:10:58,238 - INFO - Downloaded: SNEX20_SWESARR_TB_GRMCT2_13803_20007_000_200211_XKKa225H_v01.csv
+ACCESS_SWESARR - 2024-10-07 21:11:00,911 - INFO - Downloaded: SNEX20_SWESARR_TB_GRMNT1_09503_20007_000_200211_XKKa225H_v01.csv
+ACCESS_SWESARR - 2024-10-07 21:11:03,951 - INFO - Downloaded: SNEX20_SWESARR_TB_GRMCT2_31901_20007_000_200211_XKKa225H_v01.csv
+ACCESS_SWESARR - 2024-10-07 21:11:06,489 - INFO - Downloaded: SNEX20_SWESARR_TB_GRMNT1_09501_20007_000_200211_XKKa225H_v01.csv
+ACCESS_SWESARR - 2024-10-07 21:11:08,812 - INFO - Downloaded: SNEX20_SWESARR_TB_GRMCT2_31803_20007_000_200211_XKKa225H_v01.csv
+ACCESS_SWESARR - 2024-10-07 21:11:12,310 - INFO - Downloaded: SNEX20_SWESARR_TB_GRMCT2_31903_20008_000_200212_XKKa225H_v01.csv
+ACCESS_SWESARR - 2024-10-07 21:11:15,639 - INFO - Downloaded: SNEX20_SWESARR_TB_GRMST1_27503_20008_000_200212_XKKa225H_v01.csv
+ACCESS_SWESARR - 2024-10-07 21:11:18,128 - INFO - Downloaded: SNEX20_SWESARR_TB_GRMCT2_31901_20009_000_200212_XKKa225H_v01.csv
+ACCESS_SWESARR - 2024-10-07 21:11:20,573 - INFO - Downloaded: SNEX20_SWESARR_TB_GRMCT2_31901_20008_000_200212_XKKa225H_v01.csv
+ACCESS_SWESARR - 2024-10-07 21:11:24,033 - INFO - Downloaded: SNEX20_SWESARR_TB_GRMCT2_13802_20009_000_200212_XKKa225H_v01.csv
+ACCESS_SWESARR - 2024-10-07 21:11:26,677 - INFO - Downloaded: SNEX20_SWESARR_TB_GRMCT2_31902_20009_000_200212_XKKa225H_v01.csv
+ACCESS_SWESARR - 2024-10-07 21:11:29,361 - INFO - Downloaded: SNEX20_SWESARR_TB_GRMNT1_09502_20008_000_200212_XKKa225H_v01.csv
+ACCESS_SWESARR - 2024-10-07 21:11:31,705 - INFO - Downloaded: SNEX20_SWESARR_TB_GRMST1_27502_20008_000_200212_XKKa225H_v01.csv
+ACCESS_SWESARR - 2024-10-07 21:11:33,929 - INFO - Downloaded: SNEX20_SWESARR_TB_GRMNT1_09503_20008_000_200212_XKKa225H_v01.csv
+ACCESS_SWESARR - 2024-10-07 21:11:36,709 - INFO - Downloaded: SNEX20_SWESARR_TB_GRMCT2_13903_20008_000_200212_XKKa225H_v01.csv
+ACCESS_SWESARR - 2024-10-07 21:11:39,107 - INFO - Downloaded: SNEX20_SWESARR_TB_GRMCT2_31902_20008_000_200212_XKKa225H_v01.csv
+ACCESS_SWESARR - 2024-10-07 21:11:41,986 - INFO - Downloaded: SNEX20_SWESARR_TB_GRMST1_27401_20008_000_200212_XKKa225H_v01.csv
+ACCESS_SWESARR - 2024-10-07 21:11:45,121 - INFO - Downloaded: SNEX20_SWESARR_TB_GRMCT2_13902_20008_000_200212_XKKa225H_v01.csv
+ACCESS_SWESARR - 2024-10-07 21:11:47,484 - INFO - Downloaded: SNEX20_SWESARR_TB_GRMNT1_09601_20008_000_200212_XKKa225H_v01.csv
+ACCESS_SWESARR - 2024-10-07 21:11:49,596 - INFO - Downloaded: SNEX20_SWESARR_TB_GRMCT2_13901_20008_000_200212_XKKa225H_v01.csv
+ACCESS_SWESARR - 2024-10-07 21:11:51,623 - INFO - Downloaded: SNEX20_SWESARR_TB_GRMCT2_13801_20009_000_200212_XKKa225H_v01.csv
 </pre>
 </div>
 </div>
 </div>
 </div>
 </div>
-</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell">
-<div class="jp-Cell jp-CodeCell jp-Notebook-cell" id="cell-id=6920bf69">
+</div>
+<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=24fbecc8">
+<div class="jp-Cell-inputWrapper" tabindex="0">
+<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
+</div>
+<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
+</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
+<p>In this example we will use the same instance of the radiometer class we instantiated earlier to download to the entire data set for 2020/02/11</p>
+</div>
+</div>
+</div>
+</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell jp-mod-noOutputs">
+<div class="jp-Cell jp-CodeCell jp-Notebook-cell jp-mod-noOutputs" id="cell-id=a7077a29">
 <div class="jp-Cell-inputWrapper" tabindex="0">
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
 <div class="jp-InputArea jp-Cell-inputArea">
-<div class="jp-InputPrompt jp-InputArea-prompt">In [6]:</div><div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
+<div class="jp-InputPrompt jp-InputArea-prompt">In [8]:</div><div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
 <div class="CodeMirror cm-s-jupyter">
 <div class="zeroclipboard-container">
 <clipboard-copy ,="" aria-label="Copy to Clipboard" for="cell-6">
@@ -1498,42 +1498,9 @@ download_data(flight_path: str, folder_name: str, band: str = 'all', dem: bool =
 </div>
 </clipboard-copy>
 </div>
-<div class="highlight-ipynb hl-python"><pre><span></span><span class="n">help</span><span class="p">(</span><span class="n">swesarr_object</span><span class="o">.</span><span class="n">download_all_data</span><span class="p">)</span>
+<div class="highlight-ipynb hl-python"><pre><span></span><span class="c1"># radiom.bulk_download_radiometer(destination_folder=destination_on_computer, day="11")</span>
 </pre></div>
-<div class="clipboard-copy-txt" id="cell-6">help(swesarr_object.download_all_data)</div>
-</div>
-</div>
-</div>
-</div>
-<div class="jp-Cell-outputWrapper">
-<div class="jp-Collapser jp-OutputCollapser jp-Cell-outputCollapser">
-</div>
-<div class="jp-OutputArea jp-Cell-outputArea">
-<div class="jp-OutputArea-child">
-<div class="jp-OutputPrompt jp-OutputArea-prompt"></div>
-<div class="jp-RenderedText jp-OutputArea-output" data-mime-type="text/plain" tabindex="0">
-<pre>Help on method download_all_data in module swesarr_pytools.access_swesarr:
-
-download_all_data(folder_name: str, band: str = 'all', dem: bool = False) -&gt; None method of swesarr_pytools.access_swesarr.AccessSwesarr instance
-    Downloads data for all flights.
-
-    This method iterates over all flight paths generated in `self.flight_names` list
-    and downloads the associated data into the specified folder. It also
-    allows for filtering by band and includes an option to download DEM (Digital
-    Elevation Model) data.
-
-    :param folder_name: str
-        The name of the folder where the downloaded data will be stored
-    :param band: str, optional
-        Specifies the band to download (e.g., "X", "KuLo", "KuHi"). Defaults to "all",
-        which downloads all available bands
-    :param dem: bool, optional
-        If True, the Digital Elevation Model (DEM) data is downloaded along with the
-        band data. Defaults to False
-
-    :return: None
-
-</pre>
+<div class="clipboard-copy-txt" id="cell-6"># radiom.bulk_download_radiometer(destination_folder=destination_on_computer, day="11")</div>
 </div>
 </div>
 </div>
@@ -1569,7 +1536,7 @@ download_all_data(folder_name: str, band: str = 'all', dem: bool = False) -&gt; 
     <span class="md-icon" title="Last update">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1zM12.5 7v5.2l4 2.4-1 1L11 13V7zM11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2z"/></svg>
     </span>
-    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-timeago"><span class="timeago" datetime="2024-10-07T21:42:13+00:00" locale="en"></span></span><span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date">2024-10-07</span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-timeago"><span class="timeago" datetime="2024-10-08T03:13:14+00:00" locale="en"></span></span><span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date">2024-10-08</span>
   </span>
 
     
@@ -1579,7 +1546,7 @@ download_all_data(folder_name: str, band: str = 'all', dem: bool = False) -&gt; 
     <span class="md-icon" title="Created">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M14.47 15.08 11 13V7h1.5v5.25l3.08 1.83c-.41.28-.79.62-1.11 1m-1.39 4.84c-.36.05-.71.08-1.08.08-4.42 0-8-3.58-8-8s3.58-8 8-8 8 3.58 8 8c0 .37-.03.72-.08 1.08.69.1 1.33.32 1.92.64.1-.56.16-1.13.16-1.72 0-5.5-4.5-10-10-10S2 6.5 2 12s4.47 10 10 10c.59 0 1.16-.06 1.72-.16-.32-.59-.54-1.23-.64-1.92M18 15v3h-3v2h3v3h2v-3h3v-2h-3v-3z"/></svg>
     </span>
-    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-timeago"><span class="timeago" datetime="2024-10-01T16:29:45+00:00" locale="en"></span></span><span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date">2024-10-01</span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-timeago"><span class="timeago" datetime="2024-10-08T02:38:38+00:00" locale="en"></span></span><span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date">2024-10-08</span>
   </span>
 
     

@@ -33,11 +33,15 @@
          <lastmod>2024-10-08</lastmod>
     </url>
     <url>
-         <loc>https://eviofekeze.github.io/swesarr_pytools/examples/data_prep/</loc>
+         <loc>https://eviofekeze.github.io/swesarr_pytools/examples/downloading_radiom/</loc>
          <lastmod>2024-10-08</lastmod>
     </url>
     <url>
-         <loc>https://eviofekeze.github.io/swesarr_pytools/examples/downloading_data/</loc>
+         <loc>https://eviofekeze.github.io/swesarr_pytools/examples/downloading_sar/</loc>
+         <lastmod>2024-10-08</lastmod>
+    </url>
+    <url>
+         <loc>https://eviofekeze.github.io/swesarr_pytools/examples/processing_sar_data/</loc>
          <lastmod>2024-10-08</lastmod>
     </url>
 </urlset>

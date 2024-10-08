@@ -12,13 +12,13 @@
         <meta name="author" content="eviofekeze">
       
       
-        <link rel="canonical" href="https://eviofekeze.github.io/swesarr_pytools/examples/data_prep/">
+        <link rel="canonical" href="https://eviofekeze.github.io/swesarr_pytools/examples/processing_sar_data/">
       
       
         <link rel="prev" href="../../changelog/">
       
       
-        <link rel="next" href="../downloading_data/">
+        <link rel="next" href="../downloading_sar/">
       
       
       <link rel="icon" href="../../assets/images/favicon.png">
@@ -26,7 +26,7 @@
     
     
       
-        <title>Data prep - swesarr_pytools</title>
+        <title>Processing sar data - swesarr_pytools</title>
       
     
     
@@ -113,7 +113,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              Data prep
+              Processing sar data
             
           </span>
         </div>
@@ -449,7 +449,7 @@
         
   
   <span class="md-ellipsis">
-    Data prep
+    Processing sar data
   </span>
   
 
@@ -467,11 +467,32 @@
   
   
     <li class="md-nav__item">
-      <a href="../downloading_data/" class="md-nav__link">
+      <a href="../downloading_sar/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
-    Downloading data
+    Downloading sar
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../downloading_radiom/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Downloading radiom
   </span>
   
 
@@ -601,7 +622,7 @@
               <article class="md-content__inner md-typeset">
                 
 
-    <a href="/swesarr_pytools/examples/data_prep/data_prep.ipynb" title="Download Notebook" class="md-content__button md-icon">
+    <a href="/swesarr_pytools/examples/processing_sar_data/processing_sar_data.ipynb" title="Download Notebook" class="md-content__button md-icon">
         <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M5 20h14v-2H5m14-9h-4V3H9v6H5l7 7z"/></svg>
     </a>
 
@@ -613,7 +634,7 @@
   
 
 
-  <h1>Data prep</h1>
+  <h1>Processing sar data</h1>
 
 <script>
 (function (global, factory) {
@@ -1050,7 +1071,17 @@ span.linenos.special { color: #000000; background-color: #ffffc0; padding-left: 
 </style>
 <!-- End of mermaid configuration --><div class="jupyter-wrapper">
 <div class="jp-Notebook" data-jp-theme-light="true" data-jp-theme-name="JupyterLab Light">
-<div class="jp-Cell jp-CodeCell jp-Notebook-cell jp-mod-noOutputs">
+<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell">
+<div class="jp-Cell-inputWrapper" tabindex="0">
+<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
+</div>
+<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
+</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
+<p>In this notebook, we will demonstrate the core functionality of the ReadSwesarr class. This class provides essential utilities for viewing  converting tif image to rasters and dataframe</p>
+</div>
+</div>
+</div>
+</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell jp-mod-noOutputs">
 <div class="jp-Cell jp-CodeCell jp-Notebook-cell jp-mod-noOutputs">
 <div class="jp-Cell-inputWrapper" tabindex="0">
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
@@ -1072,13 +1103,25 @@ span.linenos.special { color: #000000; background-color: #ffffc0; padding-left: 
 <div class="highlight-ipynb hl-python"><pre><span></span><span class="kn">import</span> <span class="nn">sys</span>
 <span class="n">sys</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">"../"</span><span class="p">)</span>
 <span class="kn">from</span> <span class="nn">swesarr_pytools.data_tools</span> <span class="kn">import</span> <span class="n">ReadSwesarr</span>
+<span class="kn">import</span> <span class="nn">pprint</span>
 </pre></div>
 <div class="clipboard-copy-txt" id="cell-1">import sys
 sys.path.append("../")
 from swesarr_pytools.data_tools import ReadSwesarr
+import pprint</div>
 </div>
 </div>
 </div>
+</div>
+</div>
+</div>
+<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell">
+<div class="jp-Cell-inputWrapper" tabindex="0">
+<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
+</div>
+<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
+</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
+<p>Let's specify the directories we need to work it</p>
 </div>
 </div>
 </div>
@@ -1101,23 +1144,39 @@ from swesarr_pytools.data_tools import ReadSwesarr
 </div>
 </clipboard-copy>
 </div>
-<div class="highlight-ipynb hl-python"><pre><span></span><span class="n">x_band</span> <span class="o">=</span> <span class="s2">"../resources/swesarr_data/GRMCT1_13801_19005_010_191106_225_XX_01/GRMCT1_13801_19005_010_191106_09225VH_XX_01.tif"</span>
+<div class="highlight-ipynb hl-python"><pre><span></span><span class="c1"># Just one band to test the downloading a singular band</span>
+<span class="n">x_band</span> <span class="o">=</span> <span class="s2">"../resources/swesarr_data/GRMCT1_13801_19005_010_191106_225_XX_01/GRMCT1_13801_19005_010_191106_09225VH_XX_01.tif"</span>
+
+<span class="c1"># Path to  v1 flight path</span>
 <span class="n">flight_folder</span> <span class="o">=</span> <span class="s2">"../resources/swesarr_data/GRMCT1_13801_19005_010_191106_225_XX_01"</span>
+
+<span class="c1"># path to lidar snow depth measurement for the area</span>
 <span class="n">lidar_data_path</span> <span class="o">=</span> <span class="s2">"../resources/lidar_data/ASO_GrandMesa_2020Feb13_snowdepth_3m.tif"</span>
 
+<span class="c1"># Path to  v3 flight path</span>
 <span class="n">swesarr_fall_v3</span> <span class="o">=</span> <span class="s2">"../resources/swesarr_data_v3/19004_011"</span>
 <span class="n">swesarr_winter_v3</span> <span class="o">=</span> <span class="s2">"../resources/swesarr_data_v3/20006_003"</span>
 
+
+<span class="c1"># Path to  v1 flight path</span>
 <span class="n">swesarr_fall_v1</span> <span class="o">=</span> <span class="s2">"../resources/swesarr_data/GRMCT1_13801_19005_010_191106_225_XX_01"</span>
 <span class="n">swesarr_winter_v1</span> <span class="o">=</span> <span class="s2">"../resources/swesarr_data/GRMCT2_13802_20006_012_200210_225_XX_01"</span>
 </pre></div>
-<div class="clipboard-copy-txt" id="cell-2">x_band = "../resources/swesarr_data/GRMCT1_13801_19005_010_191106_225_XX_01/GRMCT1_13801_19005_010_191106_09225VH_XX_01.tif"
+<div class="clipboard-copy-txt" id="cell-2"># Just one band to test the downloading a singular band
+x_band = "../resources/swesarr_data/GRMCT1_13801_19005_010_191106_225_XX_01/GRMCT1_13801_19005_010_191106_09225VH_XX_01.tif"
+
+# Path to  v1 flight path
 flight_folder = "../resources/swesarr_data/GRMCT1_13801_19005_010_191106_225_XX_01"
+
+# path to lidar snow depth measurement for the area
 lidar_data_path = "../resources/lidar_data/ASO_GrandMesa_2020Feb13_snowdepth_3m.tif"
 
+# Path to  v3 flight path
 swesarr_fall_v3 = "../resources/swesarr_data_v3/19004_011"
 swesarr_winter_v3 = "../resources/swesarr_data_v3/20006_003"
 
+
+# Path to  v1 flight path
 swesarr_fall_v1 = "../resources/swesarr_data/GRMCT1_13801_19005_010_191106_225_XX_01"
 swesarr_winter_v1 = "../resources/swesarr_data/GRMCT2_13802_20006_012_200210_225_XX_01"</div>
 </div>
@@ -2958,7 +3017,7 @@ Attributes:
     <span class="md-icon" title="Last update">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1zM12.5 7v5.2l4 2.4-1 1L11 13V7zM11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2z"/></svg>
     </span>
-    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-timeago"><span class="timeago" datetime="2024-10-01T18:27:55+00:00" locale="en"></span></span><span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date">2024-10-01</span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-timeago"><span class="timeago" datetime="2024-10-08T03:13:14+00:00" locale="en"></span></span><span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date">2024-10-08</span>
   </span>
 
     
