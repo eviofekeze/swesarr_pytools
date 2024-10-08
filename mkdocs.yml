@@ -80,7 +80,7 @@ nav:
     - Changelog: changelog.md
     - Report Issues: https://github.com/eviofekeze/swesarr_pytools/issues
     - Examples:
-        - examples/data_prep.ipynb
+        - examples/processing_sar_data.ipynb
         - examples/downloading_sar.ipynb
         - examples/downloading_radiom.ipynb
     - API Reference:
