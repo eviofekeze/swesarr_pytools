@@ -17,12 +17,9 @@ Center, uses active and passive microwave sensors to map the radio frequency emi
 snow water equivalent.
 
 SWESARR has three active (including a dual Ku band) and three passive bands. Radar data is collected in dual polarization
-(VV, VH) while the radiometer makes single polarization (H) observations.
-
-Additionally, SWESARR contains airborne microwave brightness temperature observations. Observations were made at three
-frequencies (10.65, 18.7, and 36.5 GHz; referred to as X, K, and Ka bands, respectively), at horizontal polarization
-with a nominal 45-degree look angle.
-
+(VV, VH) while the radiometer makes single polarization (H) observations of microwave brightness temperature. Radiometer
+observations were made at three frequencies (10.65, 18.7, and 36.5 GHz; referred to as X, K, and Ka bands,
+respectively), at horizontal polarization with a nominal 45-degree look angle.
 
 To learn more about SWESARR, please see this tutorial delivered during the NASA Earth Science & UW Hackweek 2024:
 https://snowex-2024.hackweek.io/tutorials/swesarr/swesarr_tut.html
