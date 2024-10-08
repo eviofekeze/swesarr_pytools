@@ -292,6 +292,20 @@ def combine_swesarr_lidar(fall_flight_directory: str,
         df = df.assign(WINC=winter_projected_object.lidar_swesarr_data_inc_dataFrame['WINC'])
         df = df.assign(WOFNA=winter_projected_object.lidar_swesarr_data_ofna_dataFrame['WOFNA'])
 
+
+    df.loc[df['F09VV'] >= 0, 'F09VV'] = np.nan
+    df.loc[df['F09VH'] >= 0, 'F09VH'] = np.nan
+    df.loc[df['F13VV'] >= 0, 'F13VV'] = np.nan
+    df.loc[df['F13VH'] >= 0, 'F13VH'] = np.nan
+    df.loc[df['F17VV'] >= 0, 'F17VV'] = np.nan
+    df.loc[df['F17VH'] >= 0, 'F17VH'] = np.nan
+    df.loc[df['W09VV'] >= 0, 'W09VV'] = np.nan
+    df.loc[df['W09VH'] >= 0, 'W09VH'] = np.nan
+    df.loc[df['W13VV'] >= 0, 'W13VV'] = np.nan
+    df.loc[df['W13VH'] >= 0, 'W13VH'] = np.nan
+    df.loc[df['W17VV'] >= 0, 'W17VV'] = np.nan
+    df.loc[df['W17VH'] >= 0, 'W17VH'] = np.nan
+
     df = df.assign(Depth=lidar_object_df['Depth'])
 
     df = df.dropna() if drop_na else df
