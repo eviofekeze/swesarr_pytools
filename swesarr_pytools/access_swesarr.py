@@ -81,8 +81,8 @@ def create_netrc(urs = 'urs.earthdata.nasa.gov'):
 class AccessSAR:
     url: str = f"https://glihtdata.gsfc.nasa.gov/files/radar/SWESARR/prerelease"
     ext: str = ""
-    flight_names: List[str] = field(default_factory=dict, init=False)
-    flight_dates: List = field(default_factory=dict, init=False)
+    flight_names: List[str] = field(default_factory=list, init=False)
+    flight_dates: List = field(default_factory=list, init=False)
     data_meta: Dict[str, str] = field(default_factory=dict, init=False)
 
     def __post_init__(self):

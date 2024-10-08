@@ -81,7 +81,8 @@ nav:
     - Report Issues: https://github.com/eviofekeze/swesarr_pytools/issues
     - Examples:
         - examples/data_prep.ipynb
-        - examples/downloading_data.ipynb
+        - examples/downloading_sar.ipynb
+        - examples/downloading_radiom.ipynb
     - API Reference:
           - swesarr_pytools module: swesarr_pytools.md
           - common module: common.md
