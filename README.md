@@ -1,7 +1,7 @@
 # swesarr_pytools
 
 
-[![image](https://img.shields.io/pypi/v/swesarr_pytools.svg)](https://pypi.python.org/pypi/swesarr_pytools)
+[![image](https://img.shields.io/pypi/v/swesarr_pytools.svg)](https://pypi.python.org/pypi/swesarr_pytools) [![DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.14279533.svg)](https://doi.org/10.5281/zenodo.14279533)
 
 [//]: # ([![image]&#40;https://img.shields.io/conda/vn/conda-forge/swesarr_pytools.svg&#41;]&#40;https://anaconda.org/conda-forge/swesarr_pytools&#41;)
 
